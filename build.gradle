@@ -63,7 +63,7 @@ tasks.withType(Javadoc) {
 }
 
 group = "pl.gsmservice"
-version = "0.0.7"
+version = "0.0.8"
 
 sourcesJar {
     archiveBaseName = "gateway"
@@ -101,7 +101,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'pl.gsmservice'
             artifactId = 'gateway'
-            version = '0.0.7'
+            version = '0.0.8'
 
             from components.java
 
