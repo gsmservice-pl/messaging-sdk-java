@@ -4,13 +4,19 @@
 // * is generated once and not overwritten in SDK generation updates
 publishing {
 	repositories {
-    		maven {
-    			  name = "GitHubPackages"
-            	  url = uri("https://maven.pkg.github.com/gsmservice-pl/messaging-sdk-java/")
-    			  credentials {
-    				username = System.getenv("GITHUB_ACTOR")
-    				password = System.getenv("GITHUB_TOKEN")
-    			  }
-    			}
-    	}
+		maven {
+			name = "GitHubPackages"
+				url = uri("https://maven.pkg.github.com/gsmservice-pl/messaging-sdk-java/")
+				credentials {
+					username = System.getenv("GITHUB_ACTOR")
+					password = System.getenv("GITHUB_TOKEN")
+					// This is your PGP private key. This is required to sign your files
+					signingKey = System.getenv("SONATYPE_SIGNING_KEY")
+					// This is your PGP private key passphrase to decrypt your private key
+					signingKeyPassphrase = System.getenv("SIGNING_KEY_PASSPHRASE")
+					signingPassword = System.getenv("SIGNING_KEY_PASSPHRASE")
+
+			}
+		}
+	}
 }
