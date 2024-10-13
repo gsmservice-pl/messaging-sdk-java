@@ -37,8 +37,8 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build sonatypeCentralUpload --no-daemon
       env:
-        SONATYPE_USERNAME: ${{ secrets.ossrh_username }}
-        SONATYPE_PASSWORD: ${{ secrets.ossrh_password }}
+        SONATYPE_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
         SONATYPE_SIGNING_KEY: ${{ secrets.GPG_SECRET_KEY }}
         SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
