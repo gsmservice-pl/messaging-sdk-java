@@ -38,9 +38,9 @@ public class Recipients {
         return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
     }
 
-    public static Recipients of(List<String> value) {
+    public static Recipients of(List<?> value) {
         Utils.checkNotNull(value, "value");
-        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<String>>(){}));
+        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<?>>(){}));
     }
 
     public static Recipients of(PhoneNumberWithCid value) {
@@ -48,10 +48,6 @@ public class Recipients {
         return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PhoneNumberWithCid>(){}));
     }
 
-    public static Recipients of(List<PhoneNumberWithCid> value) {
-        Utils.checkNotNull(value, "value");
-        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<PhoneNumberWithCid>>(){}));
-    }
     
     /**
      * Returns an instance of one of these types:
