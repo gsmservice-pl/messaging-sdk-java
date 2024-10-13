@@ -8,7 +8,8 @@
 name: Gradle Package
 
 "on":
-  workflow_dispatch:
+  release:
+    types: [created]
 
 jobs:
   build:
@@ -34,6 +35,13 @@ jobs:
     - name: Set privileges
       run: chmod +x ./gradlew
 
+    - name: Build with Gradle
+      run: ./gradlew build sonatypeCentralUpload --no-daemon
+      env:
+        SONATYPE_USERNAME: ${{ secrets.OSSRH_USERNAME }}
+        SONATYPE_PASSWORD: ${{ secrets.OSSRH_PASSWORD }}
+        SONATYPE_SIGNING_KEY: ${{ secrets.GPG_SECRET_KEY }}
+        SIGNING_KEY_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
     # The USERNAME and TOKEN need to correspond to the credentials environment variables used in
     # the publishing section of your build.gradle
     - name: Publish to GitHub Packages
