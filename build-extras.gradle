@@ -10,12 +10,6 @@ publishing {
 				credentials {
 					username = System.getenv("GITHUB_ACTOR")
 					password = System.getenv("GITHUB_TOKEN")
-					// This is your PGP private key. This is required to sign your files
-					signingKey = System.getenv("SONATYPE_SIGNING_KEY")
-					// This is your PGP private key passphrase to decrypt your private key
-					signingKeyPassphrase = System.getenv("SIGNING_KEY_PASSPHRASE")
-					signingPassword = System.getenv("SIGNING_KEY_PASSPHRASE")
-
 			}
 		}
 	}
