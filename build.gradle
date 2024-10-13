@@ -63,7 +63,7 @@ tasks.withType(Javadoc) {
 }
 
 group = "pl.gsmservice"
-version = "0.0.6"
+version = "0.0.7"
 
 sourcesJar {
     archiveBaseName = "gateway"
@@ -101,17 +101,17 @@ publishing {
         maven(MavenPublication) {
             groupId = 'pl.gsmservice'
             artifactId = 'gateway'
-            version = '0.0.6'
+            version = '0.0.7'
 
             from components.java
 
             pom {
-                name = 'My Company Java SDK'
-                description = 'SDK enabling Java developers to easily integrate with the My Company API.'
-                url = 'https://github.com/owner/repo'
+                name = 'GSMService.pl Java SDK'
+                description = 'SDK enabling Java developers to easily integrate with the GSMService.pl API.'
+                url = 'https://github.com/gsmservice-pl/messaging-sdk-java'
                 scm {
-                    url = 'github.com/owner/repo'
-                    connection = 'scm:git:ssh://git@github.com/owner/repo.git'
+                    url = 'github.com/gsmservice-pl/messaging-sdk-java'
+                    connection = 'scm:git:ssh://git@github.com/gsmservice-pl/messaging-sdk-java.git'
                 }
                 licenses {
                     license {
@@ -121,14 +121,14 @@ publishing {
                 }
                 developers {
                     developer {
-                        name = 'My Company'
-                        organization = 'My Company'
-                        email = 'info@mycompany.com'
+                        name = 'GSMService.pl'
+                        organization = 'GSMService.pl'
+                        email = 'bramka@gsmservice.pl'
                     }
                 }
                 organization {
-                    name = 'My Company'
-                    url = 'www.mycompany.com'
+                    name = 'GSMService.pl'
+                    url = 'bramka.gsmservice.pl'
                 }
             }
         }
