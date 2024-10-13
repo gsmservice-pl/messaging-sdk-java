@@ -1,3 +1,4 @@
+[![Maven Central Version](https://img.shields.io/maven-central/v/pl.gsmservice/gateway)](https://central.sonatype.com/artifact/pl.gsmservice/gateway)
 [![GitHub License](https://img.shields.io/github/license/gsmservice-pl/messaging-sdk-php)](https://github.com/gsmservice-pl/messaging-sdk-php/blob/main/LICENSE)
 [![Static Badge](https://img.shields.io/badge/built_by-Speakeasy-yellow)](https://www.speakeasy.com/?utm_source=openapi&utm_campaign=java)
 # GSMService.pl Messaging REST API SDK for Java
