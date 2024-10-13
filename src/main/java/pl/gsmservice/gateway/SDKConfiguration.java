@@ -23,7 +23,7 @@ class SDKConfiguration {
     public String server;
     private static final String LANGUAGE = "java";
     public static final String OPENAPI_DOC_VERSION = "0.9.2";
-    public static final String SDK_VERSION = "0.0.8";
+    public static final String SDK_VERSION = "0.0.9";
     public static final String GEN_VERSION = "2.438.3";
     private static final String BASE_PACKAGE = "pl.gsmservice.gateway";
     public static final String USER_AGENT = 
