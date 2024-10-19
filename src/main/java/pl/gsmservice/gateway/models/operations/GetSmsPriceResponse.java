@@ -40,7 +40,7 @@ public class GetSmsPriceResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The request was processed successfully. Please check the price and the details of particular messages in response body
+     * The request was processed successfully. Please check the price and the details of particular messages in each <code>Price</code> object
      */
     private Optional<? extends List<Price>> prices;
 
@@ -98,7 +98,7 @@ public class GetSmsPriceResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check the price and the details of particular messages in response body
+     * The request was processed successfully. Please check the price and the details of particular messages in each <code>Price</code> object
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -143,7 +143,7 @@ public class GetSmsPriceResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check the price and the details of particular messages in response body
+     * The request was processed successfully. Please check the price and the details of particular messages in each <code>Price</code> object
      */
     public GetSmsPriceResponse withPrices(List<Price> prices) {
         Utils.checkNotNull(prices, "prices");
@@ -152,7 +152,7 @@ public class GetSmsPriceResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check the price and the details of particular messages in response body
+     * The request was processed successfully. Please check the price and the details of particular messages in each <code>Price</code> object
      */
     public GetSmsPriceResponse withPrices(Optional<? extends List<Price>> prices) {
         Utils.checkNotNull(prices, "prices");
@@ -247,7 +247,7 @@ public class GetSmsPriceResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check the price and the details of particular messages in response body
+         * The request was processed successfully. Please check the price and the details of particular messages in each <code>Price</code> object
          */
         public Builder prices(List<Price> prices) {
             Utils.checkNotNull(prices, "prices");
@@ -256,7 +256,7 @@ public class GetSmsPriceResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check the price and the details of particular messages in response body
+         * The request was processed successfully. Please check the price and the details of particular messages in each <code>Price</code> object
          */
         public Builder prices(Optional<? extends List<Price>> prices) {
             Utils.checkNotNull(prices, "prices");

@@ -19,7 +19,7 @@ import pl.gsmservice.gateway.utils.Utils;
 public class GetIncomingMessagesRequest {
 
     /**
-     * Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+     * List&lt;Long&gt; of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      */
     @SpeakeasyMetadata("pathParam:style=simple,explode=true,name=ids")
     private List<Long> ids;
@@ -32,7 +32,7 @@ public class GetIncomingMessagesRequest {
     }
 
     /**
-     * Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+     * List&lt;Long&gt; of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      */
     @JsonIgnore
     public List<Long> ids() {
@@ -44,7 +44,7 @@ public class GetIncomingMessagesRequest {
     }
 
     /**
-     * Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+     * List&lt;Long&gt; of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      */
     public GetIncomingMessagesRequest withIds(List<Long> ids) {
         Utils.checkNotNull(ids, "ids");
@@ -86,7 +86,7 @@ public class GetIncomingMessagesRequest {
         }
 
         /**
-         * Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+         * List&lt;Long&gt; of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
          */
         public Builder ids(List<Long> ids) {
             Utils.checkNotNull(ids, "ids");

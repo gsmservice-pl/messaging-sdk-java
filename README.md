@@ -3,6 +3,8 @@
 [![Static Badge](https://img.shields.io/badge/built_by-Speakeasy-yellow)](https://www.speakeasy.com/?utm_source=openapi&utm_campaign=java)
 # GSMService.pl Messaging REST API SDK for Java
 
+
+
 This package includes Messaging SDK for Java to send SMS & MMS messages directly from your app via https://bramka.gsmservice.pl messaging platform.
 
 ## Additional documentation:
@@ -37,7 +39,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'pl.gsmservice:gateway:0.0.11'
+implementation 'pl.gsmservice:gateway:0.1.74'
 ```
 
 Maven:
@@ -45,7 +47,7 @@ Maven:
 <dependency>
     <groupId>pl.gsmservice</groupId>
     <artifactId>gateway</artifactId>
-    <version>0.0.11</version>
+    <version>0.1.74</version>
 </dependency>
 ```
 
@@ -79,7 +81,7 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.Recipients;
-import pl.gsmservice.gateway.models.components.Sms;
+import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsType;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendSmsRequestBody;
@@ -94,8 +96,8 @@ public class Application {
             .build();
 
         SendSmsRequestBody req = SendSmsRequestBody.of(List.of(
-                Sms.builder()
-                    .recipients(Recipients.of(List.of(
+                SmsMessage.builder()
+                    .recipients(Recipients.ofArrayOfStrings(List.of(
                         "+48999999999")))
                     .message("To jest treść wiadomości")
                     .sender("Bramka SMS")

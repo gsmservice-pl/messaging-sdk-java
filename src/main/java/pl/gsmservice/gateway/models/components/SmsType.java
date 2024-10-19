@@ -7,13 +7,7 @@ package pl.gsmservice.gateway.models.components;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SmsType - SMS type according to the table
- *     
- * |type|Description|
- * |----|-----------|
- * |  1 |  SMS PRO  |
- * |  3 |  SMS ECO  |
- * |  4 |  SMS 2WAY |
+ * SmsType - SMS type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt; SMS 2WAY)
  */
 public enum SmsType {
     SmsPro(1L),

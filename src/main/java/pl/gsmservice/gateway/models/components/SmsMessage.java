@@ -23,13 +23,13 @@ import pl.gsmservice.gateway.utils.LazySingletonValue;
 import pl.gsmservice.gateway.utils.Utils;
 
 /**
- * Sms - An object with a new SMS message properties
+ * SmsMessage - An object with a new SMS message properties
  */
 
-public class Sms {
+public class SmsMessage {
 
     /**
-     * The recipient number or multiple recipients numbers of single message. To set one recipient, simply pass here a `string` with his phone number. To set multiple recipients, pass here a simple `array` of `string`. Optionally you can also set custom id (user identifier) for each message - pass `PhoneNumberWithCid` object (in case of single recipient) or `Array` of `PhoneNumberWithCid` (in case of multiple recipients).
+     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
      */
     @JsonProperty("recipients")
     private Recipients recipients;
@@ -48,20 +48,14 @@ public class Sms {
     private Optional<String> sender;
 
     /**
-     * SMS type according to the table
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 |  SMS PRO  |
-     * |  3 |  SMS ECO  |
-     * |  4 |  SMS 2WAY |
+     * SMS type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt; SMS 2WAY)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
     private Optional<? extends SmsType> type;
 
     /**
-     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If *false*, those characters will be automatically replaced with their equivalents. If *true* your message will be sent as **unicode** but the message will be able to consist of fewer characters.
+     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If <em>false</em>, those characters will be automatically replaced with their equivalents. If <em>true</em> your message will be sent as <strong>unicode</strong> but the message will be able to consist of fewer characters.
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("unicode")
@@ -82,7 +76,7 @@ public class Sms {
     private JsonNullable<OffsetDateTime> date;
 
     @JsonCreator
-    public Sms(
+    public SmsMessage(
             @JsonProperty("recipients") Recipients recipients,
             @JsonProperty("message") String message,
             @JsonProperty("sender") Optional<String> sender,
@@ -106,14 +100,14 @@ public class Sms {
         this.date = date;
     }
     
-    public Sms(
+    public SmsMessage(
             Recipients recipients,
             String message) {
         this(recipients, message, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
     }
 
     /**
-     * The recipient number or multiple recipients numbers of single message. To set one recipient, simply pass here a `string` with his phone number. To set multiple recipients, pass here a simple `array` of `string`. Optionally you can also set custom id (user identifier) for each message - pass `PhoneNumberWithCid` object (in case of single recipient) or `Array` of `PhoneNumberWithCid` (in case of multiple recipients).
+     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
      */
     @JsonIgnore
     public Recipients recipients() {
@@ -137,13 +131,7 @@ public class Sms {
     }
 
     /**
-     * SMS type according to the table
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 |  SMS PRO  |
-     * |  3 |  SMS ECO  |
-     * |  4 |  SMS 2WAY |
+     * SMS type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt; SMS 2WAY)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -152,7 +140,7 @@ public class Sms {
     }
 
     /**
-     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If *false*, those characters will be automatically replaced with their equivalents. If *true* your message will be sent as **unicode** but the message will be able to consist of fewer characters.
+     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If <em>false</em>, those characters will be automatically replaced with their equivalents. If <em>true</em> your message will be sent as <strong>unicode</strong> but the message will be able to consist of fewer characters.
      */
     @JsonIgnore
     public Optional<Boolean> unicode() {
@@ -180,9 +168,9 @@ public class Sms {
     }
 
     /**
-     * The recipient number or multiple recipients numbers of single message. To set one recipient, simply pass here a `string` with his phone number. To set multiple recipients, pass here a simple `array` of `string`. Optionally you can also set custom id (user identifier) for each message - pass `PhoneNumberWithCid` object (in case of single recipient) or `Array` of `PhoneNumberWithCid` (in case of multiple recipients).
+     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
      */
-    public Sms withRecipients(Recipients recipients) {
+    public SmsMessage withRecipients(Recipients recipients) {
         Utils.checkNotNull(recipients, "recipients");
         this.recipients = recipients;
         return this;
@@ -191,7 +179,7 @@ public class Sms {
     /**
      * SMS message content
      */
-    public Sms withMessage(String message) {
+    public SmsMessage withMessage(String message) {
         Utils.checkNotNull(message, "message");
         this.message = message;
         return this;
@@ -200,7 +188,7 @@ public class Sms {
     /**
      * SMS sender name
      */
-    public Sms withSender(String sender) {
+    public SmsMessage withSender(String sender) {
         Utils.checkNotNull(sender, "sender");
         this.sender = Optional.ofNullable(sender);
         return this;
@@ -209,55 +197,43 @@ public class Sms {
     /**
      * SMS sender name
      */
-    public Sms withSender(Optional<String> sender) {
+    public SmsMessage withSender(Optional<String> sender) {
         Utils.checkNotNull(sender, "sender");
         this.sender = sender;
         return this;
     }
 
     /**
-     * SMS type according to the table
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 |  SMS PRO  |
-     * |  3 |  SMS ECO  |
-     * |  4 |  SMS 2WAY |
+     * SMS type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt; SMS 2WAY)
      */
-    public Sms withType(SmsType type) {
+    public SmsMessage withType(SmsType type) {
         Utils.checkNotNull(type, "type");
         this.type = Optional.ofNullable(type);
         return this;
     }
 
     /**
-     * SMS type according to the table
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 |  SMS PRO  |
-     * |  3 |  SMS ECO  |
-     * |  4 |  SMS 2WAY |
+     * SMS type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt; SMS 2WAY)
      */
-    public Sms withType(Optional<? extends SmsType> type) {
+    public SmsMessage withType(Optional<? extends SmsType> type) {
         Utils.checkNotNull(type, "type");
         this.type = type;
         return this;
     }
 
     /**
-     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If *false*, those characters will be automatically replaced with their equivalents. If *true* your message will be sent as **unicode** but the message will be able to consist of fewer characters.
+     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If <em>false</em>, those characters will be automatically replaced with their equivalents. If <em>true</em> your message will be sent as <strong>unicode</strong> but the message will be able to consist of fewer characters.
      */
-    public Sms withUnicode(boolean unicode) {
+    public SmsMessage withUnicode(boolean unicode) {
         Utils.checkNotNull(unicode, "unicode");
         this.unicode = Optional.ofNullable(unicode);
         return this;
     }
 
     /**
-     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If *false*, those characters will be automatically replaced with their equivalents. If *true* your message will be sent as **unicode** but the message will be able to consist of fewer characters.
+     * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If <em>false</em>, those characters will be automatically replaced with their equivalents. If <em>true</em> your message will be sent as <strong>unicode</strong> but the message will be able to consist of fewer characters.
      */
-    public Sms withUnicode(Optional<Boolean> unicode) {
+    public SmsMessage withUnicode(Optional<Boolean> unicode) {
         Utils.checkNotNull(unicode, "unicode");
         this.unicode = unicode;
         return this;
@@ -266,7 +242,7 @@ public class Sms {
     /**
      * Should the message to be sent with class 0 (FLASH)?
      */
-    public Sms withFlash(boolean flash) {
+    public SmsMessage withFlash(boolean flash) {
         Utils.checkNotNull(flash, "flash");
         this.flash = Optional.ofNullable(flash);
         return this;
@@ -275,7 +251,7 @@ public class Sms {
     /**
      * Should the message to be sent with class 0 (FLASH)?
      */
-    public Sms withFlash(Optional<Boolean> flash) {
+    public SmsMessage withFlash(Optional<Boolean> flash) {
         Utils.checkNotNull(flash, "flash");
         this.flash = flash;
         return this;
@@ -284,7 +260,7 @@ public class Sms {
     /**
      * Scheduled future date and time of sending the message (in ISO 8601 format). If missing or null - message will be sent immediately
      */
-    public Sms withDate(OffsetDateTime date) {
+    public SmsMessage withDate(OffsetDateTime date) {
         Utils.checkNotNull(date, "date");
         this.date = JsonNullable.of(date);
         return this;
@@ -293,7 +269,7 @@ public class Sms {
     /**
      * Scheduled future date and time of sending the message (in ISO 8601 format). If missing or null - message will be sent immediately
      */
-    public Sms withDate(JsonNullable<OffsetDateTime> date) {
+    public SmsMessage withDate(JsonNullable<OffsetDateTime> date) {
         Utils.checkNotNull(date, "date");
         this.date = date;
         return this;
@@ -307,7 +283,7 @@ public class Sms {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Sms other = (Sms) o;
+        SmsMessage other = (SmsMessage) o;
         return 
             Objects.deepEquals(this.recipients, other.recipients) &&
             Objects.deepEquals(this.message, other.message) &&
@@ -332,7 +308,7 @@ public class Sms {
     
     @Override
     public String toString() {
-        return Utils.toString(Sms.class,
+        return Utils.toString(SmsMessage.class,
                 "recipients", recipients,
                 "message", message,
                 "sender", sender,
@@ -363,7 +339,7 @@ public class Sms {
         }
 
         /**
-         * The recipient number or multiple recipients numbers of single message. To set one recipient, simply pass here a `string` with his phone number. To set multiple recipients, pass here a simple `array` of `string`. Optionally you can also set custom id (user identifier) for each message - pass `PhoneNumberWithCid` object (in case of single recipient) or `Array` of `PhoneNumberWithCid` (in case of multiple recipients).
+         * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
          */
         public Builder recipients(Recipients recipients) {
             Utils.checkNotNull(recipients, "recipients");
@@ -399,13 +375,7 @@ public class Sms {
         }
 
         /**
-         * SMS type according to the table
-         *     
-         * |type|Description|
-         * |----|-----------|
-         * |  1 |  SMS PRO  |
-         * |  3 |  SMS ECO  |
-         * |  4 |  SMS 2WAY |
+         * SMS type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt; SMS 2WAY)
          */
         public Builder type(SmsType type) {
             Utils.checkNotNull(type, "type");
@@ -414,13 +384,7 @@ public class Sms {
         }
 
         /**
-         * SMS type according to the table
-         *     
-         * |type|Description|
-         * |----|-----------|
-         * |  1 |  SMS PRO  |
-         * |  3 |  SMS ECO  |
-         * |  4 |  SMS 2WAY |
+         * SMS type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt; SMS 2WAY)
          */
         public Builder type(Optional<? extends SmsType> type) {
             Utils.checkNotNull(type, "type");
@@ -429,7 +393,7 @@ public class Sms {
         }
 
         /**
-         * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If *false*, those characters will be automatically replaced with their equivalents. If *true* your message will be sent as **unicode** but the message will be able to consist of fewer characters.
+         * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If <em>false</em>, those characters will be automatically replaced with their equivalents. If <em>true</em> your message will be sent as <strong>unicode</strong> but the message will be able to consist of fewer characters.
          */
         public Builder unicode(boolean unicode) {
             Utils.checkNotNull(unicode, "unicode");
@@ -438,7 +402,7 @@ public class Sms {
         }
 
         /**
-         * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If *false*, those characters will be automatically replaced with their equivalents. If *true* your message will be sent as **unicode** but the message will be able to consist of fewer characters.
+         * Should the message be sent with special characters, e.g. Polish diacritics (if any)? If <em>false</em>, those characters will be automatically replaced with their equivalents. If <em>true</em> your message will be sent as <strong>unicode</strong> but the message will be able to consist of fewer characters.
          */
         public Builder unicode(Optional<Boolean> unicode) {
             Utils.checkNotNull(unicode, "unicode");
@@ -482,7 +446,7 @@ public class Sms {
             return this;
         }
         
-        public Sms build() {
+        public SmsMessage build() {
             if (sender == null) {
                 sender = _SINGLETON_VALUE_Sender.value();
             }
@@ -497,7 +461,7 @@ public class Sms {
             }
             if (date == null) {
                 date = _SINGLETON_VALUE_Date.value();
-            }            return new Sms(
+            }            return new SmsMessage(
                 recipients,
                 message,
                 sender,

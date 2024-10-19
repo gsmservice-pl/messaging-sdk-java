@@ -40,7 +40,7 @@ public class CancelMessagesResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The request was processed successfully. Please check the status of messages cancellation in response body.
+     * The request was processed successfully. Please check the status of messages cancellation in <code>status</code> property of each <code>CancelledMessage</code> object.
      */
     private Optional<? extends List<CancelledMessage>> cancelledMessages;
 
@@ -98,7 +98,7 @@ public class CancelMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check the status of messages cancellation in response body.
+     * The request was processed successfully. Please check the status of messages cancellation in <code>status</code> property of each <code>CancelledMessage</code> object.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -143,7 +143,7 @@ public class CancelMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check the status of messages cancellation in response body.
+     * The request was processed successfully. Please check the status of messages cancellation in <code>status</code> property of each <code>CancelledMessage</code> object.
      */
     public CancelMessagesResponse withCancelledMessages(List<CancelledMessage> cancelledMessages) {
         Utils.checkNotNull(cancelledMessages, "cancelledMessages");
@@ -152,7 +152,7 @@ public class CancelMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check the status of messages cancellation in response body.
+     * The request was processed successfully. Please check the status of messages cancellation in <code>status</code> property of each <code>CancelledMessage</code> object.
      */
     public CancelMessagesResponse withCancelledMessages(Optional<? extends List<CancelledMessage>> cancelledMessages) {
         Utils.checkNotNull(cancelledMessages, "cancelledMessages");
@@ -247,7 +247,7 @@ public class CancelMessagesResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check the status of messages cancellation in response body.
+         * The request was processed successfully. Please check the status of messages cancellation in <code>status</code> property of each <code>CancelledMessage</code> object.
          */
         public Builder cancelledMessages(List<CancelledMessage> cancelledMessages) {
             Utils.checkNotNull(cancelledMessages, "cancelledMessages");
@@ -256,7 +256,7 @@ public class CancelMessagesResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check the status of messages cancellation in response body.
+         * The request was processed successfully. Please check the status of messages cancellation in <code>status</code> property of each <code>CancelledMessage</code> object.
          */
         public Builder cancelledMessages(Optional<? extends List<CancelledMessage>> cancelledMessages) {
             Utils.checkNotNull(cancelledMessages, "cancelledMessages");

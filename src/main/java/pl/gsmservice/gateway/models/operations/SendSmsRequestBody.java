@@ -13,7 +13,7 @@ import java.lang.String;
 import java.lang.SuppressWarnings;
 import java.util.List;
 import java.util.Objects;
-import pl.gsmservice.gateway.models.components.Sms;
+import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.utils.OneOfDeserializer;
 import pl.gsmservice.gateway.utils.TypedObject;
 import pl.gsmservice.gateway.utils.Utils.JsonShape;
@@ -21,7 +21,7 @@ import pl.gsmservice.gateway.utils.Utils.TypeReferenceWithShape;
 import pl.gsmservice.gateway.utils.Utils;
 
 /**
- * SendSmsRequestBody - To send a single SMS or messages with the same content to multiple recipients, pass in the Request Body a single `Sms` object with the properties of this message. To send multiple messages with different content at the same time, pass in the Request Body an `array` of `Sms` objects with the properties of each message.
+ * SendSmsRequestBody - To send a single SMS or messages with the same content to multiple recipients, please use <code>SendSmsRequestBody.of(SmsMessage)</code> method with a single <code>SmsMessage</code> object with the properties of this message. To send multiple messages with different content at the same time, please use <code>SendSmsRequestBody.of(List.of(SmsMessage,...))</code> method passing to it <code>List&lt;SmsMessage&gt;</code> with the properties of each message.
  */
 
 @JsonDeserialize(using = SendSmsRequestBody._Deserializer.class)
@@ -34,21 +34,21 @@ public class SendSmsRequestBody {
         this.value = value;
     }
 
-    public static SendSmsRequestBody of(Sms value) {
+    public static SendSmsRequestBody of(SmsMessage value) {
         Utils.checkNotNull(value, "value");
-        return new SendSmsRequestBody(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<Sms>(){}));
+        return new SendSmsRequestBody(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<SmsMessage>(){}));
     }
 
-    public static SendSmsRequestBody of(List<Sms> value) {
+    public static SendSmsRequestBody of(List<SmsMessage> value) {
         Utils.checkNotNull(value, "value");
-        return new SendSmsRequestBody(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<Sms>>(){}));
+        return new SendSmsRequestBody(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<SmsMessage>>(){}));
     }
     
     /**
      * Returns an instance of one of these types:
      * <ul>
-     * <li>{@code pl.gsmservice.gateway.models.components.Sms}</li>
-     * <li>{@code java.util.List<pl.gsmservice.gateway.models.components.Sms>}</li>
+     * <li>{@code pl.gsmservice.gateway.models.components.SmsMessage}</li>
+     * <li>{@code java.util.List<pl.gsmservice.gateway.models.components.SmsMessage>}</li>
      * </ul>
      * 
      * <p>Use {@code instanceof} to determine what type is returned. For example:
@@ -88,8 +88,8 @@ public class SendSmsRequestBody {
 
         public _Deserializer() {
             super(SendSmsRequestBody.class, false,
-                  TypeReferenceWithShape.of(new TypeReference<List<Sms>>() {}, JsonShape.DEFAULT),
-                  TypeReferenceWithShape.of(new TypeReference<Sms>() {}, JsonShape.DEFAULT));
+                  TypeReferenceWithShape.of(new TypeReference<List<SmsMessage>>() {}, JsonShape.DEFAULT),
+                  TypeReferenceWithShape.of(new TypeReference<SmsMessage>() {}, JsonShape.DEFAULT));
         }
     }
     

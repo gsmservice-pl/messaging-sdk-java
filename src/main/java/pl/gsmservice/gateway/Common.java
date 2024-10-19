@@ -32,9 +32,6 @@ import pl.gsmservice.gateway.utils.Retries;
 import pl.gsmservice.gateway.utils.RetryConfig;
 import pl.gsmservice.gateway.utils.Utils; 
 
-/**
- * This section describes other usefull operations and tools
- */
 public class Common implements
             MethodCallPing {
 
@@ -47,11 +44,16 @@ public class Common implements
 
     /**
      * Checks API availability and version
-     * Check the API connection and the current API availability status. Also you will get the current API version number. The request doesn't contain a body or any parameters.
      * 
-     * As a successful result a `PingResponse` object will be returned. This request doesn't need to be authenticated.
+ * <br>
+ * <br>Check the API connection and the current API availability status. Also you will get the current API version number. The method doesn't accept any parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * PingResponse res = sdk.common().ping()
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>As a successful result a <code>PingResponse</code> object will be returned.
      * @return The call builder
      */
     public PingRequestBuilder ping() {
@@ -60,11 +62,16 @@ public class Common implements
 
     /**
      * Checks API availability and version
-     * Check the API connection and the current API availability status. Also you will get the current API version number. The request doesn't contain a body or any parameters.
      * 
-     * As a successful result a `PingResponse` object will be returned. This request doesn't need to be authenticated.
+ * <br>
+ * <br>Check the API connection and the current API availability status. Also you will get the current API version number. The method doesn't accept any parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * PingResponse res = sdk.common().ping()
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>As a successful result a <code>PingResponse</code> object will be returned.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -74,11 +81,16 @@ public class Common implements
     
     /**
      * Checks API availability and version
-     * Check the API connection and the current API availability status. Also you will get the current API version number. The request doesn't contain a body or any parameters.
      * 
-     * As a successful result a `PingResponse` object will be returned. This request doesn't need to be authenticated.
+ * <br>
+ * <br>Check the API connection and the current API availability status. Also you will get the current API version number. The method doesn't accept any parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * PingResponse res = sdk.common().ping()
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>As a successful result a <code>PingResponse</code> object will be returned.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails

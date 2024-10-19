@@ -1,0 +1,54 @@
+<html>
+<body>
+<p>
+	This package includes Messaging SDK for Java to send SMS &amp; MMS messages directly from your app via <a href="https://bramka.gsmservice.pl">https://bramka.gsmservice.pl</a> messaging platform.
+</p>
+<h2>Additional documentation</h2>
+<p>Please find documentation with examples on <a href="https://github.com/gsmservice-pl/messaging-sdk-java">our GitHub</a></p>
+<p>You can also refer to the <a href="https://api.gsmservice.pl/rest/">REST API documentation</a> for additional details about the basics of this SDK.</p>
+<h2>Builder style SDK</h2>
+<p>
+	This SDK uses <strong>builders</strong> and method chaining for all SDK objects. For example, to create a SmsMessage object please use this style:
+<pre><code>
+SmsMessage.builder()
+   .recipients(
+	  Recipients.of("+48999999999")
+   )
+   .message("To jest treść wiadomości")
+   .sender("Bramka SMS")
+   .type(SmsType.SmsPro)
+   .unicode(true)
+   .flash(false)
+   .build()
+</code></pre>
+</p>
+<p>For example, to build a <code>SenderInput</code> object you call <code>SenderInput.builder()</code> and not new <code>Builders.SenderInputFactory()</code>.</p>
+<h2>Null safety</h2>
+<p>For non-required and nullable fields, the java.util.Optional and JSONNullable classes are used.</p>
+<h2>Initialization</h2>
+<p>
+	<em>Client</em> class is used to initialize SDK environment.<br>
+	<br>Please initialize it this way:
+<pre><code>
+import java.lang.Exception;
+import pl.gsmservice.gateway.Client;
+import pl.gsmservice.gateway.models.errors.ErrorResponse;
+Client sdk = Client.builder()
+   .bearer("&lt;YOUR API ACCESS TOKEN&gt;")
+   .build();
+</code></pre>
+	<br>If you want to use a Sandbox test system please initialize it as follows:
+	<br>
+<pre><code>
+Client sdk = Client.builder()
+   .server(Client.AvailableServers.SANDBOX)
+   .bearer("&lt;YOUR API ACCESS TOKEN&gt;")
+   .build();
+</code></pre>
+</p>
+<dl>
+	<dt>Author</dt>
+	<dd>GSMService.pl</dd>
+</dl>
+</body>
+</html>

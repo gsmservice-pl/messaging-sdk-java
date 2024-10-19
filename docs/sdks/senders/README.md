@@ -12,11 +12,12 @@
 
 ## list
 
-Get a list of allowed senders defined in your account. The request doesn't contain a body or any parameters. 
-        
-As a successful result an array with `Sender` objects will be returned, each object per single sender. Senders are being registered by providers and operators. Registered senders get *Active* status and can be used then to send messages. *Pending* senders are also returned by API (with proper `status`) but until registration they cannot be used. This request have to be authenticated using **API Access Token**.
-
-In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+<br><br>Get a list of allowed senders defined in your account. The method doesn't take any parameters. Please use builder style:<br>
+```
+ListSendersResponse res = sdk.senders().list()
+   .call();
+```
+<br>As a successful result a `ListSendersResponse` object will be returned wich `senders` property of type `List<Sender>` containing `Sender` objects, each object per single sender.
 
 ### Example Usage
 
@@ -58,11 +59,13 @@ public class Application {
 
 ## add
 
-Define a new allowed sender on your account. The request body should contain a `Sender` object with two properties: `sender` (defines sender name) and `description`. The secont parameter is very important - sender names are being registered by providers and operators. Only fully registered sender names can be used to send messages. Providers need sometimes detailed description of case in which the sender will be used to eliminate frauds. After verifing it they make a decisions if such sender name can be registered. Please carefully fill this property with the extensive description of a sender name (what will be its use, what the name mean, etc). 
-        
-As a successful result a single `Sender` object will be returned. Registered senders get *Active* status and can be used then to send messages. Pending Senders are also returned by API (with proper `status`) but until registration they cannot be used. Response will also include meta-data header: `X-Sandbox` (if a request was made in Sandbox or Production system). This request have to be authenticated using **API Access Token**.
-
-In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+<br><br>Define a new allowed sender on your account. You should pass as parameter a `SenderInput` object with two properties: `sender` (defines sender name) and `description`. Please use builder style:<br>
+```
+AddSenderResponse res = sdk.senders().add()
+   .request(req)
+   .call();
+```
+<br>Please carefully fill this property with the extensive description of a sender name (what will be its use, what the name mean, etc). <br><br>As a successful result a `AddSenderResponse` object will be returned with a `sender` property containing a `Sender` object with details and status of added sender name.
 
 ### Example Usage
 
@@ -117,12 +120,13 @@ public class Application {
 
 ## delete
 
-Removes defined sender name from your account. This endpoint accepts a path `sender` parameter with empty request body. You should pass the full sender name to delete it. Sender name will be deleted immediately.
-
-As a successful response only HTTP status code of *204* will be returned in header with empty response body. Response will also include meta-data header: `X-Sandbox` (if a request was made in Sandbox or Production system).
-This request have to be authenticated using **API Access Token**.
-
-In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+<br><br>Removes defined sender name from your account. This method accepts a `string` with a <strong>sender name</strong> you want to remove. Please use builder style:<br>
+```
+DeleteSenderResponse res = sdk.senders().delete()
+   .sender("Podpis")
+   .call();
+```
+<br>Sender name will be deleted immediately.<br><br>As a successful response a `DeleteSenderResponse` object will de returned with `statusCode` property of `204`.
 
 ### Example Usage
 
@@ -169,14 +173,13 @@ public class Application {
 
 ## setDefault
 
-Set default sender name to one of the senders names already defined on your account. Default sender name can be used while sending messages when you not pass any other defined sender to `Sms` object while sending message. 
-
-This endpoint accepts a path `sender` parameter with empty request body. You should pass the full sender name to set it as default on your account.
-
-As a successful response only HTTP status code of *204* will be returned in header with empty response body. Response will also include meta-data header: `X-Sandbox` (if a request was made in Sandbox or Production system).
-This request have to be authenticated using **API Access Token**.
-
-In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+<br><br>Set default sender name to one of the senders names already defined on your account. This method accepts a `string` containing a <strong>sender name</strong> to be set as default on your account. Please use a builder style:<br>
+```
+SetDefaultSenderResponse res = sdk.senders().setDefault()
+   .sender("Podpis")
+   .call();
+```
+<br>As a successful response a `SetDefaultSenderResponse` will be returned with `statusCode` property of `204`.
 
 ### Example Usage
 

@@ -62,13 +62,19 @@ public class Outgoing implements
 
     /**
      * Get the messages details and status by IDs
-     * Check the current status and details of one or more messages using their `ids`. You have to pass the unique message *IDs* as path parameter, which were returned after sending a message. If you want to get the details of multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to get details of larger volume of messages, please split it to several separate requests.
-     *     
-     * As a successful result an array with `Message` objects will be returned, each object per single found message. Response will also include meta-data headers: `X-Success-Count` (a count of messages which were found and returned correctly) and `X-Error-Count` (count of messages which were not found).
      * 
-     * If you pass duplicated IDs, API will return data of this message only once. This request have to be authenticated using **API Access Token**. 
+ * <br>
+ * <br>Check the current status and details of one or more messages using their <code>ids</code>. You should pass the <code>ListOf()</code> containing unique message <em>IDs</em> (<code>Long</code> type) which details you want to fetch. Please use builder style:
+ * <br>
+     * <pre><code>
+     * GetMessagesResponse res = sdk.outgoing().getByIds()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>This method will accept maximum 50 identifiers in one call.
+ * <br>
+ * <br>As a successful result a <code>GetMessagesResponse</code> object will be returned containing <code>messages</code> property of type <code>List&lt;Message&gt;</code> with <code>Message</code> objects, each object per single found message. <code>GetMessagesResponse</code> object will also contain <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of messages which were found and returned correctly) and <code>X-Error-Count</code> (count of messages which were not found) elements.
      * @return The call builder
      */
     public GetMessagesRequestBuilder getByIds() {
@@ -77,14 +83,20 @@ public class Outgoing implements
 
     /**
      * Get the messages details and status by IDs
-     * Check the current status and details of one or more messages using their `ids`. You have to pass the unique message *IDs* as path parameter, which were returned after sending a message. If you want to get the details of multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to get details of larger volume of messages, please split it to several separate requests.
-     *     
-     * As a successful result an array with `Message` objects will be returned, each object per single found message. Response will also include meta-data headers: `X-Success-Count` (a count of messages which were found and returned correctly) and `X-Error-Count` (count of messages which were not found).
      * 
-     * If you pass duplicated IDs, API will return data of this message only once. This request have to be authenticated using **API Access Token**. 
+ * <br>
+ * <br>Check the current status and details of one or more messages using their <code>ids</code>. You should pass the <code>ListOf()</code> containing unique message <em>IDs</em> (<code>Long</code> type) which details you want to fetch. Please use builder style:
+ * <br>
+     * <pre><code>
+     * GetMessagesResponse res = sdk.outgoing().getByIds()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * @param ids Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+ * <br>This method will accept maximum 50 identifiers in one call.
+ * <br>
+ * <br>As a successful result a <code>GetMessagesResponse</code> object will be returned containing <code>messages</code> property of type <code>List&lt;Message&gt;</code> with <code>Message</code> objects, each object per single found message. <code>GetMessagesResponse</code> object will also contain <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of messages which were found and returned correctly) and <code>X-Error-Count</code> (count of messages which were not found) elements.
+     * @param ids List<Long> of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -95,14 +107,20 @@ public class Outgoing implements
     
     /**
      * Get the messages details and status by IDs
-     * Check the current status and details of one or more messages using their `ids`. You have to pass the unique message *IDs* as path parameter, which were returned after sending a message. If you want to get the details of multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to get details of larger volume of messages, please split it to several separate requests.
-     *     
-     * As a successful result an array with `Message` objects will be returned, each object per single found message. Response will also include meta-data headers: `X-Success-Count` (a count of messages which were found and returned correctly) and `X-Error-Count` (count of messages which were not found).
      * 
-     * If you pass duplicated IDs, API will return data of this message only once. This request have to be authenticated using **API Access Token**. 
+ * <br>
+ * <br>Check the current status and details of one or more messages using their <code>ids</code>. You should pass the <code>ListOf()</code> containing unique message <em>IDs</em> (<code>Long</code> type) which details you want to fetch. Please use builder style:
+ * <br>
+     * <pre><code>
+     * GetMessagesResponse res = sdk.outgoing().getByIds()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * @param ids Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+ * <br>This method will accept maximum 50 identifiers in one call.
+ * <br>
+ * <br>As a successful result a <code>GetMessagesResponse</code> object will be returned containing <code>messages</code> property of type <code>List&lt;Message&gt;</code> with <code>Message</code> objects, each object per single found message. <code>GetMessagesResponse</code> object will also contain <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of messages which were found and returned correctly) and <code>X-Error-Count</code> (count of messages which were not found) elements.
+     * @param ids List<Long> of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -246,15 +264,21 @@ public class Outgoing implements
 
     /**
      * Cancel a scheduled messages
-     * Cancel messages using their `ids` which were scheduled to be sent at a specific time. You have to pass the unique message IDs as path parameter, which were returned after sending a message. If you want to cancel multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to cancel larger volume of messages, please split it to several separate requests. You can cancel only messages with *SCHEDULED* status.
-     *  
-     * As a successful result an array with `CancelledMessage` objects will be returned, each object per single message id. The `status` property will contain a status code of operation - `204` if message was cancelled successfully and other code if an error occured with cancelling a given message. In case of an error, an `error` property will contain `ErrorResponse` object with the details of an error.
-     *  
-     * Response will also include meta-data headers: `X-Success-Count` (a count of messages which were cancelled successfully), `X-Error-Count` (count of messages which were not cancelled) and `X-Sandbox` (if a request was made in Sandbox or Production system).
-     *  
-     * If you pass duplicated message IDs in one call, API will process them only once. This request have to be authenticated using **API Access Token**.
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>
+ * <br>Cancel messages using their <code>ids</code> which were scheduled to be sent at a specific time. You have to pass a <code>ListOf()</code> containing the unique message IDs (<code>Long</code> type), which were returned after sending a message. Please use builder style:
+ * <br>
+     * <pre><code>
+     * CancelMessagesResponse res2 = sdk.outgoing().cancelScheduled()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
+     * 
+ * <br>This method will accept maximum 50 identifiers in one call. You can cancel only messages with <em>SCHEDULED</em> status.
+     *  
+     * As a successful result a <code>CancelMessagesResponse</code> object will be returned, with <code>cancelledMessages</code> property of type <code>List&lt;CancelledMessage&gt;</code> containing <code>CancelledMessage</code> objects. The <code>status</code> property of each <code>CancelledMessage</code> object will contain a status code of operation - <code>204</code> if a particular message was cancelled successfully and other code if an error occured.
+     *  
+     * <code>CancelMessagesResponse</code> object will also contain <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of messages which were cancelled successfully), <code>X-Error-Count</code> (count of messages which were not cancelled) and <code>X-Sandbox</code> (if a request was made in Sandbox or Production system) elements.
      * @return The call builder
      */
     public CancelMessagesRequestBuilder cancelScheduled() {
@@ -263,16 +287,22 @@ public class Outgoing implements
 
     /**
      * Cancel a scheduled messages
-     * Cancel messages using their `ids` which were scheduled to be sent at a specific time. You have to pass the unique message IDs as path parameter, which were returned after sending a message. If you want to cancel multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to cancel larger volume of messages, please split it to several separate requests. You can cancel only messages with *SCHEDULED* status.
-     *  
-     * As a successful result an array with `CancelledMessage` objects will be returned, each object per single message id. The `status` property will contain a status code of operation - `204` if message was cancelled successfully and other code if an error occured with cancelling a given message. In case of an error, an `error` property will contain `ErrorResponse` object with the details of an error.
-     *  
-     * Response will also include meta-data headers: `X-Success-Count` (a count of messages which were cancelled successfully), `X-Error-Count` (count of messages which were not cancelled) and `X-Sandbox` (if a request was made in Sandbox or Production system).
-     *  
-     * If you pass duplicated message IDs in one call, API will process them only once. This request have to be authenticated using **API Access Token**.
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * @param ids Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+ * <br>
+ * <br>Cancel messages using their <code>ids</code> which were scheduled to be sent at a specific time. You have to pass a <code>ListOf()</code> containing the unique message IDs (<code>Long</code> type), which were returned after sending a message. Please use builder style:
+ * <br>
+     * <pre><code>
+     * CancelMessagesResponse res2 = sdk.outgoing().cancelScheduled()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
+     * 
+ * <br>This method will accept maximum 50 identifiers in one call. You can cancel only messages with <em>SCHEDULED</em> status.
+     *  
+     * As a successful result a <code>CancelMessagesResponse</code> object will be returned, with <code>cancelledMessages</code> property of type <code>List&lt;CancelledMessage&gt;</code> containing <code>CancelledMessage</code> objects. The <code>status</code> property of each <code>CancelledMessage</code> object will contain a status code of operation - <code>204</code> if a particular message was cancelled successfully and other code if an error occured.
+     *  
+     * <code>CancelMessagesResponse</code> object will also contain <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of messages which were cancelled successfully), <code>X-Error-Count</code> (count of messages which were not cancelled) and <code>X-Sandbox</code> (if a request was made in Sandbox or Production system) elements.
+     * @param ids List<Long> of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -283,16 +313,22 @@ public class Outgoing implements
     
     /**
      * Cancel a scheduled messages
-     * Cancel messages using their `ids` which were scheduled to be sent at a specific time. You have to pass the unique message IDs as path parameter, which were returned after sending a message. If you want to cancel multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to cancel larger volume of messages, please split it to several separate requests. You can cancel only messages with *SCHEDULED* status.
-     *  
-     * As a successful result an array with `CancelledMessage` objects will be returned, each object per single message id. The `status` property will contain a status code of operation - `204` if message was cancelled successfully and other code if an error occured with cancelling a given message. In case of an error, an `error` property will contain `ErrorResponse` object with the details of an error.
-     *  
-     * Response will also include meta-data headers: `X-Success-Count` (a count of messages which were cancelled successfully), `X-Error-Count` (count of messages which were not cancelled) and `X-Sandbox` (if a request was made in Sandbox or Production system).
-     *  
-     * If you pass duplicated message IDs in one call, API will process them only once. This request have to be authenticated using **API Access Token**.
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * @param ids Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+ * <br>
+ * <br>Cancel messages using their <code>ids</code> which were scheduled to be sent at a specific time. You have to pass a <code>ListOf()</code> containing the unique message IDs (<code>Long</code> type), which were returned after sending a message. Please use builder style:
+ * <br>
+     * <pre><code>
+     * CancelMessagesResponse res2 = sdk.outgoing().cancelScheduled()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
+     * 
+ * <br>This method will accept maximum 50 identifiers in one call. You can cancel only messages with <em>SCHEDULED</em> status.
+     *  
+     * As a successful result a <code>CancelMessagesResponse</code> object will be returned, with <code>cancelledMessages</code> property of type <code>List&lt;CancelledMessage&gt;</code> containing <code>CancelledMessage</code> objects. The <code>status</code> property of each <code>CancelledMessage</code> object will contain a status code of operation - <code>204</code> if a particular message was cancelled successfully and other code if an error occured.
+     *  
+     * <code>CancelMessagesResponse</code> object will also contain <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of messages which were cancelled successfully), <code>X-Error-Count</code> (count of messages which were not cancelled) and <code>X-Sandbox</code> (if a request was made in Sandbox or Production system) elements.
+     * @param ids List<Long> of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
@@ -436,14 +472,20 @@ public class Outgoing implements
 
     /**
      * Lists the history of sent messages
-     * Get the details and current status of all of sent messages from your account message history. This endpoint supports pagination so you have to pass as query parameters a `page` value (number of page with messages which you want to access) and a `limit` value (max of messages per page). Messages are fetched from the latest one. The system will accept maximum **50** as `limit` parameter value. If you need to get details of larger volume of messages, please access them with next pages.
-     *     
-     * As a successful result an array with `Message` objects will be returned, each object per single message. Response will also include meta-data headers: `X-Total-Results` (a total count of all messages which are available in history on your account), `X-Total-Pages` (a total number of all pages with results), `X-Current-Page` (A current page number) and `X-Limit` (messages count per single page). This request have to be authenticated using **API Access Token**. 
      * 
-     * A response contains also a special `Link` header which includes *URIs* to access next, previous, first and last page with messages (which complies with [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988)). 
+ * <br>
+ * <br>Get the details and current status of all of sent messages from your account message history. This method supports pagination so you have to pass a <code>page</code> (number of page with messages which you want to access, <code>Long</code> type) and a <code>limit</code> (max of messages per page, <code>Long</code> type) parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * ListMessagesResponse res = sdk.outgoing().list()
+     *    .page(1L)
+     *    .limit(10L)
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * 
+ * <br>Messages are fetched from the latest one. This method will accept maximum value of <strong>50</strong> as <code>limit</code> parameter value.
+ * <br>
+ * <br>As a successful result a <code>ListMessagesResponse</code> object will be returned containing <code>messages</code> property of type <code>List&lt;Message&gt;</code> with a <code>Message</code> objects, each object per single message. <code>ListMessagesResponse</code> will also contain <code>headers</code> property where you can find <code>X-Total-Results</code> (a total count of all messages which are available in history on your account), <code>X-Total-Pages</code> (a total number of all pages with results), <code>X-Current-Page</code> (A current page number) and <code>X-Limit</code> (messages count per single page) elements.
      * @return The call builder
      */
     public ListMessagesRequestBuilder list() {
@@ -452,14 +494,20 @@ public class Outgoing implements
 
     /**
      * Lists the history of sent messages
-     * Get the details and current status of all of sent messages from your account message history. This endpoint supports pagination so you have to pass as query parameters a `page` value (number of page with messages which you want to access) and a `limit` value (max of messages per page). Messages are fetched from the latest one. The system will accept maximum **50** as `limit` parameter value. If you need to get details of larger volume of messages, please access them with next pages.
-     *     
-     * As a successful result an array with `Message` objects will be returned, each object per single message. Response will also include meta-data headers: `X-Total-Results` (a total count of all messages which are available in history on your account), `X-Total-Pages` (a total number of all pages with results), `X-Current-Page` (A current page number) and `X-Limit` (messages count per single page). This request have to be authenticated using **API Access Token**. 
      * 
-     * A response contains also a special `Link` header which includes *URIs* to access next, previous, first and last page with messages (which complies with [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988)). 
+ * <br>
+ * <br>Get the details and current status of all of sent messages from your account message history. This method supports pagination so you have to pass a <code>page</code> (number of page with messages which you want to access, <code>Long</code> type) and a <code>limit</code> (max of messages per page, <code>Long</code> type) parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * ListMessagesResponse res = sdk.outgoing().list()
+     *    .page(1L)
+     *    .limit(10L)
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * 
+ * <br>Messages are fetched from the latest one. This method will accept maximum value of <strong>50</strong> as <code>limit</code> parameter value.
+ * <br>
+ * <br>As a successful result a <code>ListMessagesResponse</code> object will be returned containing <code>messages</code> property of type <code>List&lt;Message&gt;</code> with a <code>Message</code> objects, each object per single message. <code>ListMessagesResponse</code> will also contain <code>headers</code> property where you can find <code>X-Total-Results</code> (a total count of all messages which are available in history on your account), <code>X-Total-Pages</code> (a total number of all pages with results), <code>X-Current-Page</code> (A current page number) and <code>X-Limit</code> (messages count per single page) elements.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -469,14 +517,20 @@ public class Outgoing implements
     
     /**
      * Lists the history of sent messages
-     * Get the details and current status of all of sent messages from your account message history. This endpoint supports pagination so you have to pass as query parameters a `page` value (number of page with messages which you want to access) and a `limit` value (max of messages per page). Messages are fetched from the latest one. The system will accept maximum **50** as `limit` parameter value. If you need to get details of larger volume of messages, please access them with next pages.
-     *     
-     * As a successful result an array with `Message` objects will be returned, each object per single message. Response will also include meta-data headers: `X-Total-Results` (a total count of all messages which are available in history on your account), `X-Total-Pages` (a total number of all pages with results), `X-Current-Page` (A current page number) and `X-Limit` (messages count per single page). This request have to be authenticated using **API Access Token**. 
      * 
-     * A response contains also a special `Link` header which includes *URIs* to access next, previous, first and last page with messages (which complies with [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988)). 
+ * <br>
+ * <br>Get the details and current status of all of sent messages from your account message history. This method supports pagination so you have to pass a <code>page</code> (number of page with messages which you want to access, <code>Long</code> type) and a <code>limit</code> (max of messages per page, <code>Long</code> type) parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * ListMessagesResponse res = sdk.outgoing().list()
+     *    .page(1L)
+     *    .limit(10L)
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * 
+ * <br>Messages are fetched from the latest one. This method will accept maximum value of <strong>50</strong> as <code>limit</code> parameter value.
+ * <br>
+ * <br>As a successful result a <code>ListMessagesResponse</code> object will be returned containing <code>messages</code> property of type <code>List&lt;Message&gt;</code> with a <code>Message</code> objects, each object per single message. <code>ListMessagesResponse</code> will also contain <code>headers</code> property where you can find <code>X-Total-Results</code> (a total count of all messages which are available in history on your account), <code>X-Total-Pages</code> (a total number of all pages with results), <code>X-Current-Page</code> (A current page number) and <code>X-Limit</code> (messages count per single page) elements.
      * @param page Page number of results
      * @param limit Number of results on one page
      * @param options additional options

@@ -40,7 +40,7 @@ public class GetIncomingMessagesResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The request was processed successfully. Please check received messages details in response body.
+     * The request was processed successfully. Please check received messages details in each <code>IncomingMessage</code> object
      */
     private Optional<? extends List<IncomingMessage>> incomingMessages;
 
@@ -98,7 +98,7 @@ public class GetIncomingMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check received messages details in response body.
+     * The request was processed successfully. Please check received messages details in each <code>IncomingMessage</code> object
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -143,7 +143,7 @@ public class GetIncomingMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check received messages details in response body.
+     * The request was processed successfully. Please check received messages details in each <code>IncomingMessage</code> object
      */
     public GetIncomingMessagesResponse withIncomingMessages(List<IncomingMessage> incomingMessages) {
         Utils.checkNotNull(incomingMessages, "incomingMessages");
@@ -152,7 +152,7 @@ public class GetIncomingMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check received messages details in response body.
+     * The request was processed successfully. Please check received messages details in each <code>IncomingMessage</code> object
      */
     public GetIncomingMessagesResponse withIncomingMessages(Optional<? extends List<IncomingMessage>> incomingMessages) {
         Utils.checkNotNull(incomingMessages, "incomingMessages");
@@ -247,7 +247,7 @@ public class GetIncomingMessagesResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check received messages details in response body.
+         * The request was processed successfully. Please check received messages details in each <code>IncomingMessage</code> object
          */
         public Builder incomingMessages(List<IncomingMessage> incomingMessages) {
             Utils.checkNotNull(incomingMessages, "incomingMessages");
@@ -256,7 +256,7 @@ public class GetIncomingMessagesResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check received messages details in response body.
+         * The request was processed successfully. Please check received messages details in each <code>IncomingMessage</code> object
          */
         public Builder incomingMessages(Optional<? extends List<IncomingMessage>> incomingMessages) {
             Utils.checkNotNull(incomingMessages, "incomingMessages");

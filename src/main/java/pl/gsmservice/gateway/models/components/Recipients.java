@@ -20,7 +20,7 @@ import pl.gsmservice.gateway.utils.Utils.TypeReferenceWithShape;
 import pl.gsmservice.gateway.utils.Utils;
 
 /**
- * Recipients - The recipient number or multiple recipients numbers of single message. To set one recipient, simply pass here a `string` with his phone number. To set multiple recipients, pass here a simple `array` of `string`. Optionally you can also set custom id (user identifier) for each message - pass `PhoneNumberWithCid` object (in case of single recipient) or `Array` of `PhoneNumberWithCid` (in case of multiple recipients).
+ * Recipients - The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
  */
 
 @JsonDeserialize(using = Recipients._Deserializer.class)
@@ -38,9 +38,9 @@ public class Recipients {
         return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
     }
 
-    public static Recipients of(List<?> value) {
+    public static Recipients ofArrayOfStrings(List<String> value) {
         Utils.checkNotNull(value, "value");
-        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<?>>(){}));
+        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<String>>(){}));
     }
 
     public static Recipients of(PhoneNumberWithCid value) {
@@ -48,6 +48,10 @@ public class Recipients {
         return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PhoneNumberWithCid>(){}));
     }
 
+    public static Recipients ofArrayOfPhoneNumberWithCids(List<PhoneNumberWithCid> value) {
+        Utils.checkNotNull(value, "value");
+        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<PhoneNumberWithCid>>(){}));
+    }
     
     /**
      * Returns an instance of one of these types:

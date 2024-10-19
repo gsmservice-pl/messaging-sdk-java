@@ -11,7 +11,7 @@ import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.Recipients;
-import pl.gsmservice.gateway.models.components.Sms;
+import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsType;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendSmsRequestBody;
@@ -26,8 +26,8 @@ public class Application {
             .build();
 
         SendSmsRequestBody req = SendSmsRequestBody.of(List.of(
-                Sms.builder()
-                    .recipients(Recipients.of(List.of(
+                SmsMessage.builder()
+                    .recipients(Recipients.ofArrayOfStrings(List.of(
                         "+48999999999")))
                     .message("To jest treść wiadomości")
                     .sender("Bramka SMS")

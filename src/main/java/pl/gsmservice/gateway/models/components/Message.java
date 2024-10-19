@@ -43,14 +43,7 @@ public class Message {
     private JsonNullable<String> cid;
 
     /**
-     * Message type according to the table:
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 | SMS PRO   |
-     * |  3 | SMS ECO   |
-     * |  4 | SMS 2WAY  |
-     * | 10 | MMS       |
+     * Message type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt;SMS 2WAY, SmsType.Mms -&gt; MMS)
      */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("type")
@@ -190,14 +183,7 @@ public class Message {
     }
 
     /**
-     * Message type according to the table:
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 | SMS PRO   |
-     * |  3 | SMS ECO   |
-     * |  4 | SMS 2WAY  |
-     * | 10 | MMS       |
+     * Message type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt;SMS 2WAY, SmsType.Mms -&gt; MMS)
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -326,14 +312,7 @@ public class Message {
     }
 
     /**
-     * Message type according to the table:
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 | SMS PRO   |
-     * |  3 | SMS ECO   |
-     * |  4 | SMS 2WAY  |
-     * | 10 | MMS       |
+     * Message type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt;SMS 2WAY, SmsType.Mms -&gt; MMS)
      */
     public Message withType(MessageType type) {
         Utils.checkNotNull(type, "type");
@@ -342,14 +321,7 @@ public class Message {
     }
 
     /**
-     * Message type according to the table:
-     *     
-     * |type|Description|
-     * |----|-----------|
-     * |  1 | SMS PRO   |
-     * |  3 | SMS ECO   |
-     * |  4 | SMS 2WAY  |
-     * | 10 | MMS       |
+     * Message type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt;SMS 2WAY, SmsType.Mms -&gt; MMS)
      */
     public Message withType(Optional<? extends MessageType> type) {
         Utils.checkNotNull(type, "type");
@@ -667,14 +639,7 @@ public class Message {
         }
 
         /**
-         * Message type according to the table:
-         *     
-         * |type|Description|
-         * |----|-----------|
-         * |  1 | SMS PRO   |
-         * |  3 | SMS ECO   |
-         * |  4 | SMS 2WAY  |
-         * | 10 | MMS       |
+         * Message type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt;SMS 2WAY, SmsType.Mms -&gt; MMS)
          */
         public Builder type(MessageType type) {
             Utils.checkNotNull(type, "type");
@@ -683,14 +648,7 @@ public class Message {
         }
 
         /**
-         * Message type according to the table:
-         *     
-         * |type|Description|
-         * |----|-----------|
-         * |  1 | SMS PRO   |
-         * |  3 | SMS ECO   |
-         * |  4 | SMS 2WAY  |
-         * | 10 | MMS       |
+         * Message type (SmsType.SmsPro -&gt; SMS PRO, SmsType.SmsEco -&gt; SMS ECO, SmsType.SmsTwoWay -&gt;SMS 2WAY, SmsType.Mms -&gt; MMS)
          */
         public Builder type(Optional<? extends MessageType> type) {
             Utils.checkNotNull(type, "type");

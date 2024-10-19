@@ -40,7 +40,7 @@ public class GetMessagesResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The request was processed successfully. Please check messages details in response body.
+     * The request was processed successfully. Please check messages details in <code>List&lt;Message&gt;</code> elements returned in <code>messages</code> property.
      */
     private Optional<? extends List<Message>> messages;
 
@@ -98,7 +98,7 @@ public class GetMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check messages details in response body.
+     * The request was processed successfully. Please check messages details in <code>List&lt;Message&gt;</code> elements returned in <code>messages</code> property.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -143,7 +143,7 @@ public class GetMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check messages details in response body.
+     * The request was processed successfully. Please check messages details in <code>List&lt;Message&gt;</code> elements returned in <code>messages</code> property.
      */
     public GetMessagesResponse withMessages(List<Message> messages) {
         Utils.checkNotNull(messages, "messages");
@@ -152,7 +152,7 @@ public class GetMessagesResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check messages details in response body.
+     * The request was processed successfully. Please check messages details in <code>List&lt;Message&gt;</code> elements returned in <code>messages</code> property.
      */
     public GetMessagesResponse withMessages(Optional<? extends List<Message>> messages) {
         Utils.checkNotNull(messages, "messages");
@@ -247,7 +247,7 @@ public class GetMessagesResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check messages details in response body.
+         * The request was processed successfully. Please check messages details in <code>List&lt;Message&gt;</code> elements returned in <code>messages</code> property.
          */
         public Builder messages(List<Message> messages) {
             Utils.checkNotNull(messages, "messages");
@@ -256,7 +256,7 @@ public class GetMessagesResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check messages details in response body.
+         * The request was processed successfully. Please check messages details in <code>List&lt;Message&gt;</code> elements returned in <code>messages</code> property.
          */
         public Builder messages(Optional<? extends List<Message>> messages) {
             Utils.checkNotNull(messages, "messages");

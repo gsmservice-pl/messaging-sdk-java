@@ -40,7 +40,7 @@ public class SendSmsResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The request was processed successfully. Please check statuses of particular messages in response body.
+     * The request was processed successfully. Please check statuses of particular messages in each <code>Message</code> object.
      */
     private Optional<? extends List<Message>> messages;
 
@@ -98,7 +98,7 @@ public class SendSmsResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check statuses of particular messages in response body.
+     * The request was processed successfully. Please check statuses of particular messages in each <code>Message</code> object.
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -143,7 +143,7 @@ public class SendSmsResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check statuses of particular messages in response body.
+     * The request was processed successfully. Please check statuses of particular messages in each <code>Message</code> object.
      */
     public SendSmsResponse withMessages(List<Message> messages) {
         Utils.checkNotNull(messages, "messages");
@@ -152,7 +152,7 @@ public class SendSmsResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please check statuses of particular messages in response body.
+     * The request was processed successfully. Please check statuses of particular messages in each <code>Message</code> object.
      */
     public SendSmsResponse withMessages(Optional<? extends List<Message>> messages) {
         Utils.checkNotNull(messages, "messages");
@@ -247,7 +247,7 @@ public class SendSmsResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check statuses of particular messages in response body.
+         * The request was processed successfully. Please check statuses of particular messages in each <code>Message</code> object.
          */
         public Builder messages(List<Message> messages) {
             Utils.checkNotNull(messages, "messages");
@@ -256,7 +256,7 @@ public class SendSmsResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please check statuses of particular messages in response body.
+         * The request was processed successfully. Please check statuses of particular messages in each <code>Message</code> object.
          */
         public Builder messages(Optional<? extends List<Message>> messages) {
             Utils.checkNotNull(messages, "messages");

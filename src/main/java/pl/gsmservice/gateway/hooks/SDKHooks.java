@@ -1,7 +1,7 @@
 package pl.gsmservice.gateway.hooks;
 
 //
-// This file is written once by speakeasy code generation and 
+// This file is written once by speakeasy code generation and
 // thereafter will not be overwritten by speakeasy updates. As a
 // consequence any customization of this class will be preserved.
 //
@@ -14,9 +14,9 @@ public final class SDKHooks {
 
     public static final void initialize(pl.gsmservice.gateway.utils.Hooks hooks) {
         // register hooks here
-        
+
         // for more information see
         // https://www.speakeasy.com/docs/additional-features/sdk-hooks
     }
-    
+
 }

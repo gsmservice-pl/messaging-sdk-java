@@ -39,7 +39,7 @@ public class ListSendersResponse implements Response {
     private HttpResponse<InputStream> rawResponse;
 
     /**
-     * The request was processed successfully. Please find senders details in response body
+     * The request was processed successfully. Please find senders details in returned Sender objects
      */
     private Optional<? extends List<Sender>> senders;
 
@@ -91,7 +91,7 @@ public class ListSendersResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please find senders details in response body
+     * The request was processed successfully. Please find senders details in returned Sender objects
      */
     @SuppressWarnings("unchecked")
     @JsonIgnore
@@ -131,7 +131,7 @@ public class ListSendersResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please find senders details in response body
+     * The request was processed successfully. Please find senders details in returned Sender objects
      */
     public ListSendersResponse withSenders(List<Sender> senders) {
         Utils.checkNotNull(senders, "senders");
@@ -140,7 +140,7 @@ public class ListSendersResponse implements Response {
     }
 
     /**
-     * The request was processed successfully. Please find senders details in response body
+     * The request was processed successfully. Please find senders details in returned Sender objects
      */
     public ListSendersResponse withSenders(Optional<? extends List<Sender>> senders) {
         Utils.checkNotNull(senders, "senders");
@@ -224,7 +224,7 @@ public class ListSendersResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please find senders details in response body
+         * The request was processed successfully. Please find senders details in returned Sender objects
          */
         public Builder senders(List<Sender> senders) {
             Utils.checkNotNull(senders, "senders");
@@ -233,7 +233,7 @@ public class ListSendersResponse implements Response {
         }
 
         /**
-         * The request was processed successfully. Please find senders details in response body
+         * The request was processed successfully. Please find senders details in returned Sender objects
          */
         public Builder senders(Optional<? extends List<Sender>> senders) {
             Utils.checkNotNull(senders, "senders");

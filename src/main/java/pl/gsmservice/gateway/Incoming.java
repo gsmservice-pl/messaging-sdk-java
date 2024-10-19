@@ -51,13 +51,22 @@ public class Incoming implements
 
     /**
      * List the received SMS messages
-     * Get the details of all of received messages from your account incoming messages box. This endpoint supports pagination so you have to pass as query parameters a `page` value (number of page with received messages which you want to access) and a `limit` value (max of received messages per page). Messages are fetched from the latest one. The system will accept maximum **50** as `limit` parameter value. If you need to get details of larger volume of messages, please access them with next pages.
-     *     
-     * As a successful result an array with `IncomingMessage` objects will be returned, each object per single received message. Response will also include meta-data headers: `X-Total-Results` (a total count of all received messages which are available in incoming box on your account), `X-Total-Pages` (a total number of all pages with results), `X-Current-Page` (A current page number) and `X-Limit` (messages count per single page). This request have to be authenticated using **API Access Token**. 
      * 
-     * A response contains also a special `Link` header which includes *URIs* to access next, previous, first and last page with received messages (which complies with [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988)).
+ * <br>
+ * <br>Get the details of all received messages from your account incoming messages box. This method supports pagination so you have to pass <code>page</code> (number of page with received messages which you want to access, <code>Long</code> type) and a <code>limit</code> (max of received messages per page, <code>Long</code> type) parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * ListIncomingMessagesResponse res = sdk.incoming().list()
+     *    .page(1L)
+     *    .limit(10L)
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>Messages are fetched from the latest one. This method will accept maximum <strong>50</strong> as <code>limit</code> parameter value.
+ * <br>
+ * <br>As a successful result a <code>ListIncomingMessagesResponse</code> object will be returned with <code>incomingMessages</code> property of type <code>List&lt;IncomingMessage&gt;</code> containing <code>IncomingMessage</code> objects, each object per single received message.
+ * <br>
+ * <br><code>ListIncomingMessagesResponse</code> object will contain also a <code>headers</code> property where you can find <code>X-Total-Results</code> (a total count of all received messages which are available in incoming box on your account), <code>X-Total-Pages</code> (a total number of all pages with results), <code>X-Current-Page</code> (A current page number) and <code>X-Limit</code> (messages count per single page) elements.
      * @return The call builder
      */
     public ListIncomingMessagesRequestBuilder list() {
@@ -66,13 +75,22 @@ public class Incoming implements
 
     /**
      * List the received SMS messages
-     * Get the details of all of received messages from your account incoming messages box. This endpoint supports pagination so you have to pass as query parameters a `page` value (number of page with received messages which you want to access) and a `limit` value (max of received messages per page). Messages are fetched from the latest one. The system will accept maximum **50** as `limit` parameter value. If you need to get details of larger volume of messages, please access them with next pages.
-     *     
-     * As a successful result an array with `IncomingMessage` objects will be returned, each object per single received message. Response will also include meta-data headers: `X-Total-Results` (a total count of all received messages which are available in incoming box on your account), `X-Total-Pages` (a total number of all pages with results), `X-Current-Page` (A current page number) and `X-Limit` (messages count per single page). This request have to be authenticated using **API Access Token**. 
      * 
-     * A response contains also a special `Link` header which includes *URIs* to access next, previous, first and last page with received messages (which complies with [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988)).
+ * <br>
+ * <br>Get the details of all received messages from your account incoming messages box. This method supports pagination so you have to pass <code>page</code> (number of page with received messages which you want to access, <code>Long</code> type) and a <code>limit</code> (max of received messages per page, <code>Long</code> type) parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * ListIncomingMessagesResponse res = sdk.incoming().list()
+     *    .page(1L)
+     *    .limit(10L)
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>Messages are fetched from the latest one. This method will accept maximum <strong>50</strong> as <code>limit</code> parameter value.
+ * <br>
+ * <br>As a successful result a <code>ListIncomingMessagesResponse</code> object will be returned with <code>incomingMessages</code> property of type <code>List&lt;IncomingMessage&gt;</code> containing <code>IncomingMessage</code> objects, each object per single received message.
+ * <br>
+ * <br><code>ListIncomingMessagesResponse</code> object will contain also a <code>headers</code> property where you can find <code>X-Total-Results</code> (a total count of all received messages which are available in incoming box on your account), <code>X-Total-Pages</code> (a total number of all pages with results), <code>X-Current-Page</code> (A current page number) and <code>X-Limit</code> (messages count per single page) elements.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -82,13 +100,22 @@ public class Incoming implements
     
     /**
      * List the received SMS messages
-     * Get the details of all of received messages from your account incoming messages box. This endpoint supports pagination so you have to pass as query parameters a `page` value (number of page with received messages which you want to access) and a `limit` value (max of received messages per page). Messages are fetched from the latest one. The system will accept maximum **50** as `limit` parameter value. If you need to get details of larger volume of messages, please access them with next pages.
-     *     
-     * As a successful result an array with `IncomingMessage` objects will be returned, each object per single received message. Response will also include meta-data headers: `X-Total-Results` (a total count of all received messages which are available in incoming box on your account), `X-Total-Pages` (a total number of all pages with results), `X-Current-Page` (A current page number) and `X-Limit` (messages count per single page). This request have to be authenticated using **API Access Token**. 
      * 
-     * A response contains also a special `Link` header which includes *URIs* to access next, previous, first and last page with received messages (which complies with [RFC 5988](https://www.rfc-editor.org/rfc/rfc5988)).
+ * <br>
+ * <br>Get the details of all received messages from your account incoming messages box. This method supports pagination so you have to pass <code>page</code> (number of page with received messages which you want to access, <code>Long</code> type) and a <code>limit</code> (max of received messages per page, <code>Long</code> type) parameters. Please use builder style:
+ * <br>
+     * <pre><code>
+     * ListIncomingMessagesResponse res = sdk.incoming().list()
+     *    .page(1L)
+     *    .limit(10L)
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>Messages are fetched from the latest one. This method will accept maximum <strong>50</strong> as <code>limit</code> parameter value.
+ * <br>
+ * <br>As a successful result a <code>ListIncomingMessagesResponse</code> object will be returned with <code>incomingMessages</code> property of type <code>List&lt;IncomingMessage&gt;</code> containing <code>IncomingMessage</code> objects, each object per single received message.
+ * <br>
+ * <br><code>ListIncomingMessagesResponse</code> object will contain also a <code>headers</code> property where you can find <code>X-Total-Results</code> (a total count of all received messages which are available in incoming box on your account), <code>X-Total-Pages</code> (a total number of all pages with results), <code>X-Current-Page</code> (A current page number) and <code>X-Limit</code> (messages count per single page) elements.
      * @param page Page number of results
      * @param limit Number of results on one page
      * @param options additional options
@@ -239,13 +266,21 @@ public class Incoming implements
 
     /**
      * Get the incoming messages by IDs
-     * Get the details of one or more received messages using their `ids`. You have to pass the unique incoming message *IDs* as path parameter, which were given while receiving a messages. If you want to get the details of multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to get details of larger volume of incoming messages, please split it to several separate requests.
-     *     
-     * As a successful result an array with `IncomingMessage` objects will be returned, each object per single found message. Response will also include meta-data headers: `X-Success-Count` (a count of incoming messages which were found and returned correctly) and `X-Error-Count` (count of incoming messages which were not found).
      * 
-     * If you pass duplicated IDs, API will return data of this message only once. This request have to be authenticated using **API Access Token**. 
+ * <br>
+ * <br>Get the details of one or more received messages using their <code>ids</code>. You should pass the ListOf() containing unique incoming message IDs (Long type) which details you want to fetch. Please use builder style:
+ * <br>
+     * <pre><code>
+     * GetIncomingMessagesResponse res = sdk.incoming().getByIds()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
+ * <br>The method will accept maximum 50 identifiers in one call.
+ * <br>
+ * <br>As a successful result a <code>GetIncomingMessagesResponse</code> object will be returned with an <code>incomingMessages</code> property of type <code>List&lt;IncomingMessage&gt;</code> containing <code>IncomingMessage</code> objects, each object per single received message.
+ * <br>
+ * <br><code>GetIncomingMessagesResponse</code> object will contain also a <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of incoming messages which were found and returned correctly) and <code>X-Error-Count</code> (count of incoming messages which were not found) elements.
      * @return The call builder
      */
     public GetIncomingMessagesRequestBuilder getByIds() {
@@ -254,14 +289,22 @@ public class Incoming implements
 
     /**
      * Get the incoming messages by IDs
-     * Get the details of one or more received messages using their `ids`. You have to pass the unique incoming message *IDs* as path parameter, which were given while receiving a messages. If you want to get the details of multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to get details of larger volume of incoming messages, please split it to several separate requests.
-     *     
-     * As a successful result an array with `IncomingMessage` objects will be returned, each object per single found message. Response will also include meta-data headers: `X-Success-Count` (a count of incoming messages which were found and returned correctly) and `X-Error-Count` (count of incoming messages which were not found).
      * 
-     * If you pass duplicated IDs, API will return data of this message only once. This request have to be authenticated using **API Access Token**. 
+ * <br>
+ * <br>Get the details of one or more received messages using their <code>ids</code>. You should pass the ListOf() containing unique incoming message IDs (Long type) which details you want to fetch. Please use builder style:
+ * <br>
+     * <pre><code>
+     * GetIncomingMessagesResponse res = sdk.incoming().getByIds()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * @param ids Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+ * <br>The method will accept maximum 50 identifiers in one call.
+ * <br>
+ * <br>As a successful result a <code>GetIncomingMessagesResponse</code> object will be returned with an <code>incomingMessages</code> property of type <code>List&lt;IncomingMessage&gt;</code> containing <code>IncomingMessage</code> objects, each object per single received message.
+ * <br>
+ * <br><code>GetIncomingMessagesResponse</code> object will contain also a <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of incoming messages which were found and returned correctly) and <code>X-Error-Count</code> (count of incoming messages which were not found) elements.
+     * @param ids List<Long> of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      * @return The response from the API call
      * @throws Exception if the API call fails
      */
@@ -272,14 +315,22 @@ public class Incoming implements
     
     /**
      * Get the incoming messages by IDs
-     * Get the details of one or more received messages using their `ids`. You have to pass the unique incoming message *IDs* as path parameter, which were given while receiving a messages. If you want to get the details of multiple messages at once, please separate their IDs with a comma. The system will accept maximum 50 identifiers in one call. If you need to get details of larger volume of incoming messages, please split it to several separate requests.
-     *     
-     * As a successful result an array with `IncomingMessage` objects will be returned, each object per single found message. Response will also include meta-data headers: `X-Success-Count` (a count of incoming messages which were found and returned correctly) and `X-Error-Count` (count of incoming messages which were not found).
      * 
-     * If you pass duplicated IDs, API will return data of this message only once. This request have to be authenticated using **API Access Token**. 
+ * <br>
+ * <br>Get the details of one or more received messages using their <code>ids</code>. You should pass the ListOf() containing unique incoming message IDs (Long type) which details you want to fetch. Please use builder style:
+ * <br>
+     * <pre><code>
+     * GetIncomingMessagesResponse res = sdk.incoming().getByIds()
+     *    .ids(List.of(43456L))
+     *    .call();
+     * </code></pre>
      * 
-     * In case of an error, the `ErrorResponse` object will be returned with proper HTTP header status code (our error response complies with [RFC 9457](https://www.rfc-editor.org/rfc/rfc7807)).
-     * @param ids Message IDs assigned by the system (separated by comma). The system will accept a maximum of 50 identifiers in one call.
+ * <br>The method will accept maximum 50 identifiers in one call.
+ * <br>
+ * <br>As a successful result a <code>GetIncomingMessagesResponse</code> object will be returned with an <code>incomingMessages</code> property of type <code>List&lt;IncomingMessage&gt;</code> containing <code>IncomingMessage</code> objects, each object per single received message.
+ * <br>
+ * <br><code>GetIncomingMessagesResponse</code> object will contain also a <code>headers</code> property where you can find <code>X-Success-Count</code> (a count of incoming messages which were found and returned correctly) and <code>X-Error-Count</code> (count of incoming messages which were not found) elements.
+     * @param ids List<Long> of Message IDs assigned by the system. The system will accept a maximum of 50 identifiers in one call.
      * @param options additional options
      * @return The response from the API call
      * @throws Exception if the API call fails
