@@ -39,7 +39,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'pl.gsmservice:gateway:2.0.1'
+implementation 'pl.gsmservice:gateway:2.0.4'
 ```
 
 Maven:
@@ -47,7 +47,7 @@ Maven:
 <dependency>
     <groupId>pl.gsmservice</groupId>
     <artifactId>gateway</artifactId>
-    <version>2.0.1</version>
+    <version>2.0.4</version>
 </dependency>
 ```
 
