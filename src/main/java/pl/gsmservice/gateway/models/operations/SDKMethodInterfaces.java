@@ -50,6 +50,20 @@ public class SDKMethodInterfaces {
     }
 
 
+    public interface MethodCallGetMmsPrice {
+        GetMmsPriceResponse getPrice(
+            GetMmsPriceRequestBody request,
+            Optional<Options> options) throws Exception;
+    }
+
+
+    public interface MethodCallSendMms {
+        SendMmsResponse send(
+            SendMmsRequestBody request,
+            Optional<Options> options) throws Exception;
+    }
+
+
     public interface MethodCallGetSmsPrice {
         GetSmsPriceResponse getPrice(
             GetSmsPriceRequestBody request,

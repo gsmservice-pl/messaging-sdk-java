@@ -48,11 +48,17 @@ public class Outgoing implements
             MethodCallListMessages {
 
     private final SDKConfiguration sdkConfiguration;
+    private final Mms mms;
     private final Sms sms;
 
     Outgoing(SDKConfiguration sdkConfiguration) {
         this.sdkConfiguration = sdkConfiguration;
+        this.mms = new Mms(this.sdkConfiguration);
         this.sms = new Sms(this.sdkConfiguration);
+    }
+
+    public final Mms mms() {
+        return mms;
     }
 
     public final Sms sms() {

@@ -20,37 +20,37 @@ import pl.gsmservice.gateway.utils.Utils.TypeReferenceWithShape;
 import pl.gsmservice.gateway.utils.Utils;
 
 /**
- * Recipients - The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
+ * SmsMessageRecipients - The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>SmsMessageRecipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>SmsMessageRecipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>SmsMessageRecipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>SmsMessageRecipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
  */
 
-@JsonDeserialize(using = Recipients._Deserializer.class)
-public class Recipients {
+@JsonDeserialize(using = SmsMessageRecipients._Deserializer.class)
+public class SmsMessageRecipients {
 
     @JsonValue
     private TypedObject value;
     
-    private Recipients(TypedObject value) {
+    private SmsMessageRecipients(TypedObject value) {
         this.value = value;
     }
 
-    public static Recipients of(String value) {
+    public static SmsMessageRecipients of(String value) {
         Utils.checkNotNull(value, "value");
-        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
+        return new SmsMessageRecipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<String>(){}));
     }
 
-    public static Recipients of2(List<String> value) {
+    public static SmsMessageRecipients ofArrayOfStrings(List<String> value) {
         Utils.checkNotNull(value, "value");
-        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<String>>(){}));
+        return new SmsMessageRecipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<String>>(){}));
     }
 
-    public static Recipients of(PhoneNumberWithCid value) {
+    public static SmsMessageRecipients of(PhoneNumberWithCid value) {
         Utils.checkNotNull(value, "value");
-        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PhoneNumberWithCid>(){}));
+        return new SmsMessageRecipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<PhoneNumberWithCid>(){}));
     }
 
-    public static Recipients ofPhoneNumberWithCid(List<PhoneNumberWithCid> value) {
+    public static SmsMessageRecipients ofArrayOfPhoneNumberWithCids(List<PhoneNumberWithCid> value) {
         Utils.checkNotNull(value, "value");
-        return new Recipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<PhoneNumberWithCid>>(){}));
+        return new SmsMessageRecipients(TypedObject.of(value, JsonShape.DEFAULT, new TypeReference<List<PhoneNumberWithCid>>(){}));
     }
     
     /**
@@ -85,7 +85,7 @@ public class Recipients {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        Recipients other = (Recipients) o;
+        SmsMessageRecipients other = (SmsMessageRecipients) o;
         return Objects.deepEquals(this.value.value(), other.value.value()); 
     }
     
@@ -95,10 +95,10 @@ public class Recipients {
     }
     
     @SuppressWarnings("serial")
-    public static final class _Deserializer extends OneOfDeserializer<Recipients> {
+    public static final class _Deserializer extends OneOfDeserializer<SmsMessageRecipients> {
 
         public _Deserializer() {
-            super(Recipients.class, false,
+            super(SmsMessageRecipients.class, false,
                   TypeReferenceWithShape.of(new TypeReference<List<PhoneNumberWithCid>>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<List<String>>() {}, JsonShape.DEFAULT),
                   TypeReferenceWithShape.of(new TypeReference<String>() {}, JsonShape.DEFAULT),
@@ -108,7 +108,7 @@ public class Recipients {
     
     @Override
     public String toString() {
-        return Utils.toString(Recipients.class,
+        return Utils.toString(SmsMessageRecipients.class,
                 "value", value);
     }
  

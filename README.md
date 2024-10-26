@@ -39,7 +39,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'pl.gsmservice:gateway:2.0.4'
+implementation 'pl.gsmservice:gateway:2.1.5'
 ```
 
 Maven:
@@ -47,7 +47,7 @@ Maven:
 <dependency>
     <groupId>pl.gsmservice</groupId>
     <artifactId>gateway</artifactId>
-    <version>2.0.4</version>
+    <version>2.1.5</version>
 </dependency>
 ```
 
@@ -80,8 +80,8 @@ import java.lang.Exception;
 import java.util.List;
 import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
-import pl.gsmservice.gateway.models.components.Recipients;
 import pl.gsmservice.gateway.models.components.SmsMessage;
+import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
 import pl.gsmservice.gateway.models.components.SmsType;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendSmsRequestBody;
@@ -97,7 +97,7 @@ public class Application {
 
         SendSmsRequestBody req = SendSmsRequestBody.of(List.of(
                 SmsMessage.builder()
-                    .recipients(Recipients.ofArrayOfStrings(List.of(
+                    .recipients(SmsMessageRecipients.ofArrayOfStrings(List.of(
                         "+48999999999")))
                     .message("To jest treść wiadomości")
                     .sender("Bramka SMS")
@@ -108,6 +108,54 @@ public class Application {
                     .build()));
 
         SendSmsResponse res = sdk.outgoing().sms().send()
+                .request(req)
+                .call();
+
+        if (res.messages().isPresent()) {
+            // handle response
+        }
+    }
+}
+```
+
+### Sending single MMS Message
+
+This example demonstrates simple sending MMS message to a single recipient:
+
+```java
+package hello.world;
+
+import java.lang.Exception;
+import java.util.List;
+import org.openapitools.jackson.nullable.JsonNullable;
+import pl.gsmservice.gateway.Client;
+import pl.gsmservice.gateway.models.components.Attachments;
+import pl.gsmservice.gateway.models.components.MmsMessage;
+import pl.gsmservice.gateway.models.components.Recipients;
+import pl.gsmservice.gateway.models.errors.ErrorResponse;
+import pl.gsmservice.gateway.models.operations.SendMmsRequestBody;
+import pl.gsmservice.gateway.models.operations.SendMmsResponse;
+
+public class Application {
+
+    public static void main(String[] args) throws ErrorResponse, Exception {
+
+        Client sdk = Client.builder()
+                .bearer("<YOUR API ACCESS TOKEN>")
+            .build();
+
+        SendMmsRequestBody req = SendMmsRequestBody.of(List.of(
+                MmsMessage.builder()
+                    .recipients(Recipients.of2(List.of(
+                        "+48999999999")))
+                    .message("To jest treść wiadomości")
+                    .subject("To jest temat wiadomości")
+                    .attachments(Attachments.of(List.of(
+                        "<file_body in base64 format>")))
+                    .date(JsonNullable.of(null))
+                    .build()));
+
+        SendMmsResponse res = sdk.outgoing().mms().send()
                 .request(req)
                 .call();
 
@@ -145,6 +193,11 @@ public class Application {
 * [getByIds](docs/sdks/outgoing/README.md#getbyids) - Get the messages details and status by IDs
 * [cancelScheduled](docs/sdks/outgoing/README.md#cancelscheduled) - Cancel a scheduled messages
 * [list](docs/sdks/outgoing/README.md#list) - Lists the history of sent messages
+
+#### [outgoing().mms()](docs/sdks/mms/README.md)
+
+* [getPrice](docs/sdks/mms/README.md#getprice) - Check the price of MMS Messages
+* [send](docs/sdks/mms/README.md#send) - Send MMS Messages
 
 #### [outgoing().sms()](docs/sdks/sms/README.md)
 

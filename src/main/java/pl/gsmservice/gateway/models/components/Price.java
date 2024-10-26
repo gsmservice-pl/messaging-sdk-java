@@ -48,9 +48,12 @@ public class Price {
     @JsonProperty("type")
     private Optional<? extends MessageType> type;
 
+    /**
+     * A telephone number in international format (with a plus sign and the country code at the beginning, e.g. +48 for Poland)
+     */
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("recipient")
-    private JsonNullable<String> recipient;
+    private Optional<String> recipient;
 
     /**
      * Message sender name
@@ -92,7 +95,7 @@ public class Price {
             @JsonProperty("error") JsonNullable<String> error,
             @JsonProperty("cid") JsonNullable<String> cid,
             @JsonProperty("type") Optional<? extends MessageType> type,
-            @JsonProperty("recipient") JsonNullable<String> recipient,
+            @JsonProperty("recipient") Optional<String> recipient,
             @JsonProperty("sender") JsonNullable<String> sender,
             @JsonProperty("parts") JsonNullable<Long> parts,
             @JsonProperty("unicode") Optional<Boolean> unicode,
@@ -119,7 +122,7 @@ public class Price {
     }
     
     public Price() {
-        this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), Optional.empty());
+        this(JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), JsonNullable.undefined(), JsonNullable.undefined(), Optional.empty(), Optional.empty(), Optional.empty());
     }
 
     /**
@@ -147,8 +150,11 @@ public class Price {
         return (Optional<MessageType>) type;
     }
 
+    /**
+     * A telephone number in international format (with a plus sign and the country code at the beginning, e.g. +48 for Poland)
+     */
     @JsonIgnore
-    public JsonNullable<String> recipient() {
+    public Optional<String> recipient() {
         return recipient;
     }
 
@@ -250,13 +256,19 @@ public class Price {
         return this;
     }
 
+    /**
+     * A telephone number in international format (with a plus sign and the country code at the beginning, e.g. +48 for Poland)
+     */
     public Price withRecipient(String recipient) {
         Utils.checkNotNull(recipient, "recipient");
-        this.recipient = JsonNullable.of(recipient);
+        this.recipient = Optional.ofNullable(recipient);
         return this;
     }
 
-    public Price withRecipient(JsonNullable<String> recipient) {
+    /**
+     * A telephone number in international format (with a plus sign and the country code at the beginning, e.g. +48 for Poland)
+     */
+    public Price withRecipient(Optional<String> recipient) {
         Utils.checkNotNull(recipient, "recipient");
         this.recipient = recipient;
         return this;
@@ -409,7 +421,7 @@ public class Price {
  
         private Optional<? extends MessageType> type = Optional.empty();
  
-        private JsonNullable<String> recipient = JsonNullable.undefined();
+        private Optional<String> recipient = Optional.empty();
  
         private JsonNullable<String> sender = JsonNullable.undefined();
  
@@ -479,13 +491,19 @@ public class Price {
             return this;
         }
 
+        /**
+         * A telephone number in international format (with a plus sign and the country code at the beginning, e.g. +48 for Poland)
+         */
         public Builder recipient(String recipient) {
             Utils.checkNotNull(recipient, "recipient");
-            this.recipient = JsonNullable.of(recipient);
+            this.recipient = Optional.ofNullable(recipient);
             return this;
         }
 
-        public Builder recipient(JsonNullable<String> recipient) {
+        /**
+         * A telephone number in international format (with a plus sign and the country code at the beginning, e.g. +48 for Poland)
+         */
+        public Builder recipient(Optional<String> recipient) {
             Utils.checkNotNull(recipient, "recipient");
             this.recipient = recipient;
             return this;

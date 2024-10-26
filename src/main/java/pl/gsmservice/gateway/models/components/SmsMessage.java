@@ -29,10 +29,10 @@ import pl.gsmservice.gateway.utils.Utils;
 public class SmsMessage {
 
     /**
-     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
+     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>SmsMessageRecipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>SmsMessageRecipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>SmsMessageRecipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>SmsMessageRecipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
      */
     @JsonProperty("recipients")
-    private Recipients recipients;
+    private SmsMessageRecipients recipients;
 
     /**
      * SMS message content
@@ -77,7 +77,7 @@ public class SmsMessage {
 
     @JsonCreator
     public SmsMessage(
-            @JsonProperty("recipients") Recipients recipients,
+            @JsonProperty("recipients") SmsMessageRecipients recipients,
             @JsonProperty("message") String message,
             @JsonProperty("sender") Optional<String> sender,
             @JsonProperty("type") Optional<? extends SmsType> type,
@@ -101,16 +101,16 @@ public class SmsMessage {
     }
     
     public SmsMessage(
-            Recipients recipients,
+            SmsMessageRecipients recipients,
             String message) {
         this(recipients, message, Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), JsonNullable.undefined());
     }
 
     /**
-     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
+     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>SmsMessageRecipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>SmsMessageRecipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>SmsMessageRecipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>SmsMessageRecipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
      */
     @JsonIgnore
-    public Recipients recipients() {
+    public SmsMessageRecipients recipients() {
         return recipients;
     }
 
@@ -168,9 +168,9 @@ public class SmsMessage {
     }
 
     /**
-     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
+     * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>SmsMessageRecipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>SmsMessageRecipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>SmsMessageRecipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>SmsMessageRecipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
      */
-    public SmsMessage withRecipients(Recipients recipients) {
+    public SmsMessage withRecipients(SmsMessageRecipients recipients) {
         Utils.checkNotNull(recipients, "recipients");
         this.recipients = recipients;
         return this;
@@ -320,7 +320,7 @@ public class SmsMessage {
     
     public final static class Builder {
  
-        private Recipients recipients;
+        private SmsMessageRecipients recipients;
  
         private String message;
  
@@ -339,9 +339,9 @@ public class SmsMessage {
         }
 
         /**
-         * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>Recipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>Recipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>Recipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>Recipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
+         * The recipient number or multiple recipients numbers of single message. To set one recipient, please use <code>SmsMessageRecipients.of(String)</code> method simply passing to it a <code>string</code> with his phone number. To set multiple recipients, please use <code>SmsMessageRecipients.ofArrayOfStrings(List.of(String,...))</code> method passing to it <code>List&lt;string&gt;</code>. Optionally you can also set custom id (user identifier) for each message - use <code>SmsMessageRecipients.of(PhoneNumberWithCid)</code> method passing <code>PhoneNumberWithCid</code> object (in case of single recipient) or <code>SmsMessageRecipients.ofArrayOfPhoneNumberWithCids(Recipients.of(PhoneNumberWithCid,...))</code> method passing List&lt;PhoneNumberWithCid&gt; (in case of multiple recipients).
          */
-        public Builder recipients(Recipients recipients) {
+        public Builder recipients(SmsMessageRecipients recipients) {
             Utils.checkNotNull(recipients, "recipients");
             this.recipients = recipients;
             return this;
