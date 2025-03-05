@@ -6,9 +6,7 @@ package pl.gsmservice.gateway;
 
 import java.lang.String;
 import java.util.Optional;
-import pl.gsmservice.gateway.hooks.SDKHooks;
 import pl.gsmservice.gateway.utils.HTTPClient;
-import pl.gsmservice.gateway.utils.Hook.SdkInitData;
 import pl.gsmservice.gateway.utils.Hooks;
 import pl.gsmservice.gateway.utils.RetryConfig;
 
@@ -18,16 +16,22 @@ class SDKConfiguration {
     public Optional<SecuritySource> securitySource() {
         return Optional.ofNullable(securitySource);
     }
+    
     public HTTPClient defaultClient;
+    
     public String serverUrl;
+    
+    public String resolvedServerUrl() {
+        return serverUrl;
+    }
     public String server;
     private static final String LANGUAGE = "java";
-    public static final String OPENAPI_DOC_VERSION = "1.1.2";
-    public static final String SDK_VERSION = "2.1.5";
-    public static final String GEN_VERSION = "2.438.15";
+    public static final String OPENAPI_DOC_VERSION = "1.2.1";
+    public static final String SDK_VERSION = "3.0.1";
+    public static final String GEN_VERSION = "2.539.1";
     private static final String BASE_PACKAGE = "pl.gsmservice.gateway";
     public static final String USER_AGENT = 
-            String.format("speakeasy-sdk/%s %s %s %s %s", 
+            String.format("speakeasy-sdk/%s %s %s %s %s",
                 LANGUAGE, SDK_VERSION, GEN_VERSION, OPENAPI_DOC_VERSION, BASE_PACKAGE);
 
     private Hooks _hooks = createHooks();
@@ -49,11 +53,7 @@ class SDKConfiguration {
      * Initializes state (for example hooks).
      **/
     public void initialize() {
-        SDKHooks.initialize(_hooks);
-        // apply the sdk init hook immediately
-        SdkInitData data = _hooks.sdkInit(new SdkInitData(serverUrl, defaultClient));
-        this.serverUrl = data.baseUrl();
-        this.defaultClient = data.client();
+
     }
 
     

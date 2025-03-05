@@ -28,7 +28,7 @@ import pl.gsmservice.gateway.models.operations.PingResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
             .build();
@@ -51,4 +51,5 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 4XX, 503, 5XX          | application/problem+json    |
+| models/errors/ErrorResponse | 400, 4XX                    | application/problem+json    |
+| models/errors/ErrorResponse | 503, 5XX                    | application/problem+json    |

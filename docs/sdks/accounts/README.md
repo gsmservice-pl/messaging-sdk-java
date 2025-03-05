@@ -10,7 +10,7 @@
 
 ## get
 
-<br><br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using [User Panel](https://panel.gsmservice.pl) you can create as many subaccounts as you need.<br><br>This method doesn't take any parameters. As a successful result a details of current account you are logged in using an API Access Token will be returned.
+<br><br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using [User Panel](https://panel.szybkisms.pl) you can create as many subaccounts as you need.<br><br>This method doesn't take any parameters. As a successful result a details of current account you are logged in using an API Access Token will be returned.
 
 ### Example Usage
 
@@ -24,7 +24,7 @@ import pl.gsmservice.gateway.models.operations.GetAccountDetailsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -48,11 +48,12 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 401, 403, 4XX, 5XX          | application/problem+json    |
+| models/errors/ErrorResponse | 401, 403, 4XX               | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## getSubaccount
 
-<br><br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using [User Panel](https://panel.gsmservice.pl).<br><br>You should pass the subaccount user login to access its data. Please use builder style: <br>
+<br><br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using [User Panel](https://panel.szybkisms.pl).<br><br>You should pass the subaccount user login to access its data. Please use builder style: <br>
 ```
 GetSubaccountDetailsResponse res = sdk.accounts().getSubaccount()
    .userLogin("some-login")
@@ -72,7 +73,7 @@ import pl.gsmservice.gateway.models.operations.GetSubaccountDetailsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -103,4 +104,5 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 401, 403, 404, 4XX, 5XX     | application/problem+json    |
+| models/errors/ErrorResponse | 401, 403, 404, 4XX          | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |

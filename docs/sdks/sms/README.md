@@ -25,19 +25,17 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.PhoneNumberWithCid;
 import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
-import pl.gsmservice.gateway.models.components.SmsType;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.GetSmsPriceRequestBody;
 import pl.gsmservice.gateway.models.operations.GetSmsPriceResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -50,11 +48,6 @@ public class Application {
                         .cid("my-id-1113")
                         .build()))
                     .message("To jest treść wiadomości")
-                    .sender("Bramka SMS")
-                    .type(SmsType.SmsPro)
-                    .unicode(true)
-                    .flash(false)
-                    .date(JsonNullable.of(null))
                     .build()));
 
         GetSmsPriceResponse res = sdk.outgoing().sms().getPrice()
@@ -82,7 +75,8 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 401, 4XX, 5XX          | application/problem+json    |
+| models/errors/ErrorResponse | 400, 401, 4XX               | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## send
 
@@ -101,18 +95,16 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
-import pl.gsmservice.gateway.models.components.SmsType;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendSmsRequestBody;
 import pl.gsmservice.gateway.models.operations.SendSmsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -123,11 +115,6 @@ public class Application {
                     .recipients(SmsMessageRecipients.ofArrayOfStrings(List.of(
                         "+48999999999")))
                     .message("To jest treść wiadomości")
-                    .sender("Bramka SMS")
-                    .type(SmsType.SmsPro)
-                    .unicode(true)
-                    .flash(false)
-                    .date(JsonNullable.of(null))
                     .build()));
 
         SendSmsResponse res = sdk.outgoing().sms().send()
@@ -155,4 +142,5 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 401, 403, 4XX, 5XX     | application/problem+json    |
+| models/errors/ErrorResponse | 400, 401, 403, 4XX          | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |

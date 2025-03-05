@@ -1,31 +1,37 @@
 [![Maven Central Version](https://img.shields.io/maven-central/v/pl.gsmservice/gateway)](https://central.sonatype.com/artifact/pl.gsmservice/gateway)
 [![GitHub License](https://img.shields.io/github/license/gsmservice-pl/messaging-sdk-php)](https://github.com/gsmservice-pl/messaging-sdk-java/blob/main/LICENSE)
 [![Static Badge](https://img.shields.io/badge/built_by-Speakeasy-yellow)](https://www.speakeasy.com/?utm_source=openapi&utm_campaign=java)
-# GSMService.pl Messaging REST API SDK for Java
+# SzybkiSMS.pl Messaging REST API SDK for Java (powered by GSMService.pl)
 
 
 
-This package includes Messaging SDK for Java to send SMS & MMS messages directly from your app via https://bramka.gsmservice.pl messaging platform.
+This package includes Messaging SDK for Java to send SMS & MMS messages directly from your app via https://szybkisms.pl messaging platform.
 
 ## Additional documentation:
 
 A documentation of all methods and types is available below in section [Available Resources and Operations
 ](#available-resources-and-operations).
 
-Also you can refer to the [REST API documentation](https://api.gsmservice.pl/rest/) for additional details about the basics of this SDK.
+Also you can refer to the [REST API documentation](https://api.szybkisms.pl/rest/) for additional details about the basics of this SDK.
 
 <!-- No Summary [summary] -->
 
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [SzybkiSMS.pl Messaging REST API SDK for Java (powered by GSMService.pl)](#szybkismspl-messaging-rest-api-sdk-for-java-powered-by-gsmservicepl)
+  * [Additional documentation:](#additional-documentation)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+  * [Authentication](#authentication)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
 
-* [SDK Installation](#sdk-installation)
-* [SDK Example Usage](#sdk-example-usage)
-* [Available Resources and Operations](#available-resources-and-operations)
-* [Retries](#retries)
-* [Error Handling](#error-handling)
-* [Server Selection](#server-selection)
-* [Authentication](#authentication)
 <!-- End Table of Contents [toc] -->
 
 <!-- Start SDK Installation [installation] -->
@@ -39,7 +45,7 @@ The samples below show how a published SDK artifact is used:
 
 Gradle:
 ```groovy
-implementation 'pl.gsmservice:gateway:2.1.5'
+implementation 'pl.gsmservice:gateway:3.0.1'
 ```
 
 Maven:
@@ -47,7 +53,7 @@ Maven:
 <dependency>
     <groupId>pl.gsmservice</groupId>
     <artifactId>gateway</artifactId>
-    <version>2.1.5</version>
+    <version>3.0.1</version>
 </dependency>
 ```
 
@@ -78,18 +84,16 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
-import pl.gsmservice.gateway.models.components.SmsType;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendSmsRequestBody;
 import pl.gsmservice.gateway.models.operations.SendSmsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -100,11 +104,6 @@ public class Application {
                     .recipients(SmsMessageRecipients.ofArrayOfStrings(List.of(
                         "+48999999999")))
                     .message("To jest treść wiadomości")
-                    .sender("Bramka SMS")
-                    .type(SmsType.SmsPro)
-                    .unicode(true)
-                    .flash(false)
-                    .date(JsonNullable.of(null))
                     .build()));
 
         SendSmsResponse res = sdk.outgoing().sms().send()
@@ -127,7 +126,6 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.Attachments;
 import pl.gsmservice.gateway.models.components.MmsMessage;
@@ -138,7 +136,7 @@ import pl.gsmservice.gateway.models.operations.SendMmsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -148,11 +146,10 @@ public class Application {
                 MmsMessage.builder()
                     .recipients(Recipients.of2(List.of(
                         "+48999999999")))
-                    .message("To jest treść wiadomości")
                     .subject("To jest temat wiadomości")
+                    .message("To jest treść wiadomości")
                     .attachments(Attachments.of(List.of(
                         "<file_body in base64 format>")))
-                    .date(JsonNullable.of(null))
                     .build()));
 
         SendMmsResponse res = sdk.outgoing().mms().send()
@@ -233,7 +230,7 @@ import pl.gsmservice.gateway.utils.RetryConfig;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -273,7 +270,7 @@ import pl.gsmservice.gateway.utils.RetryConfig;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .retryConfig(RetryConfig.builder()
@@ -307,9 +304,10 @@ Handling errors in this SDK should largely match your expectations. All operatio
 
 By default, an API error will throw a `models/errors/SDKError` exception. When custom error responses are specified for an operation, the SDK may also throw their associated exception. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `get` method throws the following exceptions:
 
-| Error Type                  | Status Code                 | Content Type                |
-| --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 401, 403, 4XX, 5XX          | application/problem+json    |
+| Error Type                  | Status Code   | Content Type             |
+| --------------------------- | ------------- | ------------------------ |
+| models/errors/ErrorResponse | 401, 403, 4XX | application/problem+json |
+| models/errors/ErrorResponse | 5XX           | application/problem+json |
 
 ### Example
 
@@ -323,7 +321,7 @@ import pl.gsmservice.gateway.models.operations.GetAccountDetailsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -345,12 +343,12 @@ public class Application {
 
 ### Select Server by Name
 
-You can override the default server globally by passing a server name to the `server` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+You can override the default server globally using the `.server(AvailableServers server)` builder method when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
 
-| Name | Server | Variables |
-| ----- | ------ | --------- |
-| `prod` | `https://api.gsmservice.pl/rest` | None |
-| `sandbox` | `https://api.gsmservice.pl/rest-sandbox` | None |
+| Name      | Server                                  | Description           |
+| --------- | --------------------------------------- | --------------------- |
+| `prod`    | `https://api.szybkisms.pl/rest`         | Production system     |
+| `sandbox` | `https://api.szybkisms.pl/rest-sandbox` | Test system (SANDBOX) |
 
 #### Example
 
@@ -364,10 +362,10 @@ import pl.gsmservice.gateway.models.operations.GetAccountDetailsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
-                .serverIndex(1)
+                .server(Client.AvailableServers.SANDBOX)
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
@@ -381,10 +379,9 @@ public class Application {
 }
 ```
 
-
 ### Override Server URL Per-Client
 
-The default server can also be overridden globally by passing a URL to the `serverURL` builder method when initializing the SDK client instance. For example:
+The default server can also be overridden globally using the `.serverURL(String serverUrl)` builder method when initializing the SDK client instance. For example:
 ```java
 package hello.world;
 
@@ -395,10 +392,10 @@ import pl.gsmservice.gateway.models.operations.GetAccountDetailsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
-                .serverURL("https://api.gsmservice.pl/rest")
+                .serverURL("https://api.szybkisms.pl/rest")
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
@@ -420,9 +417,9 @@ public class Application {
 
 This SDK supports the following security scheme globally:
 
-| Name        | Type        | Scheme      |
-| ----------- | ----------- | ----------- |
-| `bearer`    | http        | HTTP Bearer |
+| Name     | Type | Scheme      |
+| -------- | ---- | ----------- |
+| `bearer` | http | HTTP Bearer |
 
 To authenticate with the API the `bearer` parameter must be set when initializing the SDK client instance. For example:
 ```java
@@ -435,7 +432,7 @@ import pl.gsmservice.gateway.models.operations.GetAccountDetailsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")

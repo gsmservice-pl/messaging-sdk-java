@@ -8,18 +8,16 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
-import pl.gsmservice.gateway.models.components.SmsType;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendSmsRequestBody;
 import pl.gsmservice.gateway.models.operations.SendSmsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -30,11 +28,6 @@ public class Application {
                     .recipients(SmsMessageRecipients.ofArrayOfStrings(List.of(
                         "+48999999999")))
                     .message("To jest treść wiadomości")
-                    .sender("Bramka SMS")
-                    .type(SmsType.SmsPro)
-                    .unicode(true)
-                    .flash(false)
-                    .date(JsonNullable.of(null))
                     .build()));
 
         SendSmsResponse res = sdk.outgoing().sms().send()
@@ -57,7 +50,6 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.Attachments;
 import pl.gsmservice.gateway.models.components.MmsMessage;
@@ -68,7 +60,7 @@ import pl.gsmservice.gateway.models.operations.SendMmsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -78,11 +70,10 @@ public class Application {
                 MmsMessage.builder()
                     .recipients(Recipients.of2(List.of(
                         "+48999999999")))
-                    .message("To jest treść wiadomości")
                     .subject("To jest temat wiadomości")
+                    .message("To jest treść wiadomości")
                     .attachments(Attachments.of(List.of(
                         "<file_body in base64 format>")))
-                    .date(JsonNullable.of(null))
                     .build()));
 
         SendMmsResponse res = sdk.outgoing().mms().send()

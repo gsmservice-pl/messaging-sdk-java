@@ -32,7 +32,7 @@ import pl.gsmservice.gateway.models.operations.GetMessagesResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -62,9 +62,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models/errors/ErrorResponse  | 400, 401, 403, 404, 4XX, 5XX | application/problem+json     |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400, 401, 403, 404, 4XX     | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## cancelScheduled
 
@@ -93,7 +94,7 @@ import pl.gsmservice.gateway.models.operations.CancelMessagesResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -123,9 +124,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models/errors/ErrorResponse  | 400, 401, 403, 404, 4XX, 5XX | application/problem+json     |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400, 401, 403, 404, 4XX     | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## list
 
@@ -150,7 +152,7 @@ import pl.gsmservice.gateway.models.operations.ListMessagesResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -181,6 +183,7 @@ public class Application {
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models/errors/ErrorResponse  | 400, 401, 403, 404, 4XX, 5XX | application/problem+json     |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400, 401, 403, 404, 4XX     | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |

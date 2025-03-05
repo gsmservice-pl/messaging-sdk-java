@@ -51,7 +51,7 @@ public class Accounts implements
      * Get account details
      * 
  * <br>
- * <br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using <a href="https://panel.gsmservice.pl">User Panel</a> you can create as many subaccounts as you need.
+ * <br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using <a href="https://panel.szybkisms.pl">User Panel</a> you can create as many subaccounts as you need.
  * <br>
  * <br>This method doesn't take any parameters. As a successful result a details of current account you are logged in using an API Access Token will be returned.
      * @return The call builder
@@ -64,7 +64,7 @@ public class Accounts implements
      * Get account details
      * 
  * <br>
- * <br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using <a href="https://panel.gsmservice.pl">User Panel</a> you can create as many subaccounts as you need.
+ * <br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using <a href="https://panel.szybkisms.pl">User Panel</a> you can create as many subaccounts as you need.
  * <br>
  * <br>This method doesn't take any parameters. As a successful result a details of current account you are logged in using an API Access Token will be returned.
      * @return The response from the API call
@@ -78,7 +78,7 @@ public class Accounts implements
      * Get account details
      * 
  * <br>
- * <br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using <a href="https://panel.gsmservice.pl">User Panel</a> you can create as many subaccounts as you need.
+ * <br>Get current account balance and other details of your account. You can check also account limit and if account is main one. Main accounts have unlimited privileges and using <a href="https://panel.szybkisms.pl">User Panel</a> you can create as many subaccounts as you need.
  * <br>
  * <br>This method doesn't take any parameters. As a successful result a details of current account you are logged in using an API Access Token will be returned.
      * @param options additional options
@@ -100,10 +100,10 @@ public class Accounts implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -133,7 +133,7 @@ public class Accounts implements
                             new BeforeRequestContextImpl(
                                 "getAccountDetails", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -146,7 +146,7 @@ public class Accounts implements
                             new AfterErrorContextImpl(
                                 "getAccountDetails",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -159,7 +159,7 @@ public class Accounts implements
                      new AfterSuccessContextImpl(
                          "getAccountDetails", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -189,7 +189,21 @@ public class Accounts implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "401", "403", "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "401", "403", "4XX")) {
+            if (Utils.contentTypeMatches(_contentType, "application/problem+json")) {
+                ErrorResponse _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<ErrorResponse>() {});
+                throw _out;
+            } else {
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             if (Utils.contentTypeMatches(_contentType, "application/problem+json")) {
                 ErrorResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),
@@ -216,7 +230,7 @@ public class Accounts implements
      * Get subaccount details
      * 
  * <br>
- * <br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using <a href="https://panel.gsmservice.pl">User Panel</a>.
+ * <br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using <a href="https://panel.szybkisms.pl">User Panel</a>.
  * <br>
  * <br>You should pass the subaccount user login to access its data. Please use builder style: 
  * <br>
@@ -237,7 +251,7 @@ public class Accounts implements
      * Get subaccount details
      * 
  * <br>
- * <br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using <a href="https://panel.gsmservice.pl">User Panel</a>.
+ * <br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using <a href="https://panel.szybkisms.pl">User Panel</a>.
  * <br>
  * <br>You should pass the subaccount user login to access its data. Please use builder style: 
  * <br>
@@ -261,7 +275,7 @@ public class Accounts implements
      * Get subaccount details
      * 
  * <br>
- * <br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using <a href="https://panel.gsmservice.pl">User Panel</a>.
+ * <br>Check account balance and other details such subcredit balance of a subaccount. Subaccounts are additional users who can access your account services and the details. You can restrict access level and setup privileges to subaccounts using <a href="https://panel.szybkisms.pl">User Panel</a>.
  * <br>
  * <br>You should pass the subaccount user login to access its data. Please use builder style: 
  * <br>
@@ -301,10 +315,10 @@ public class Accounts implements
         _req.addHeader("Accept", "application/json")
             .addHeader("user-agent", 
                 SDKConfiguration.USER_AGENT);
-
+        
+        Optional<SecuritySource> _hookSecuritySource = this.sdkConfiguration.securitySource();
         Utils.configureSecurity(_req,  
                 this.sdkConfiguration.securitySource.getSecurity());
-
         HTTPClient _client = this.sdkConfiguration.defaultClient;
         HTTPRequest _finalReq = _req;
         RetryConfig _retryConfig;
@@ -334,7 +348,7 @@ public class Accounts implements
                             new BeforeRequestContextImpl(
                                 "getSubaccountDetails", 
                                 Optional.of(List.of()), 
-                                sdkConfiguration.securitySource()),
+                                _hookSecuritySource),
                             _finalReq.build());
                 } catch (Exception _e) {
                     throw new NonRetryableException(_e);
@@ -347,7 +361,7 @@ public class Accounts implements
                             new AfterErrorContextImpl(
                                 "getSubaccountDetails",
                                  Optional.of(List.of()),
-                                 sdkConfiguration.securitySource()), 
+                                 _hookSecuritySource), 
                             Optional.empty(),
                             Optional.of(_e));
                 }
@@ -360,7 +374,7 @@ public class Accounts implements
                      new AfterSuccessContextImpl(
                          "getSubaccountDetails", 
                          Optional.of(List.of()), 
-                         sdkConfiguration.securitySource()),
+                         _hookSecuritySource),
                      _retries.run());
         String _contentType = _httpRes
             .headers()
@@ -390,7 +404,21 @@ public class Accounts implements
                     Utils.extractByteArrayFromBody(_httpRes));
             }
         }
-        if (Utils.statusCodeMatches(_httpRes.statusCode(), "401", "403", "404", "4XX", "5XX")) {
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "401", "403", "404", "4XX")) {
+            if (Utils.contentTypeMatches(_contentType, "application/problem+json")) {
+                ErrorResponse _out = Utils.mapper().readValue(
+                    Utils.toUtf8AndClose(_httpRes.body()),
+                    new TypeReference<ErrorResponse>() {});
+                throw _out;
+            } else {
+                throw new SDKError(
+                    _httpRes, 
+                    _httpRes.statusCode(), 
+                    "Unexpected content-type received: " + _contentType, 
+                    Utils.extractByteArrayFromBody(_httpRes));
+            }
+        }
+        if (Utils.statusCodeMatches(_httpRes.statusCode(), "5XX")) {
             if (Utils.contentTypeMatches(_contentType, "application/problem+json")) {
                 ErrorResponse _out = Utils.mapper().readValue(
                     Utils.toUtf8AndClose(_httpRes.body()),

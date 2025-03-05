@@ -31,7 +31,7 @@ import pl.gsmservice.gateway.models.operations.ListSendersResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -55,7 +55,8 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 401, 403, 4XX, 5XX     | application/problem+json    |
+| models/errors/ErrorResponse | 400, 401, 403, 4XX          | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## add
 
@@ -80,7 +81,7 @@ import pl.gsmservice.gateway.models.operations.AddSenderResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -116,7 +117,8 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 401, 403, 4XX, 5XX     | application/problem+json    |
+| models/errors/ErrorResponse | 400, 401, 403, 4XX          | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## delete
 
@@ -140,7 +142,7 @@ import pl.gsmservice.gateway.models.operations.DeleteSenderResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -167,9 +169,10 @@ public class Application {
 
 ### Errors
 
-| Error Type                   | Status Code                  | Content Type                 |
-| ---------------------------- | ---------------------------- | ---------------------------- |
-| models/errors/ErrorResponse  | 400, 401, 403, 404, 4XX, 5XX | application/problem+json     |
+| Error Type                  | Status Code                 | Content Type                |
+| --------------------------- | --------------------------- | --------------------------- |
+| models/errors/ErrorResponse | 400, 401, 403, 404, 4XX     | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## setDefault
 
@@ -193,7 +196,7 @@ import pl.gsmservice.gateway.models.operations.SetDefaultSenderResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -222,5 +225,6 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 401, 403, 4XX, 5XX     | application/problem+json    |
 | models/errors/ErrorResponse | 404                         | application/json            |
+| models/errors/ErrorResponse | 400, 401, 403, 4XX          | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |

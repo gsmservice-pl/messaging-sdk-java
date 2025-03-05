@@ -25,7 +25,6 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.Attachments;
 import pl.gsmservice.gateway.models.components.MmsMessage;
@@ -37,7 +36,7 @@ import pl.gsmservice.gateway.models.operations.GetMmsPriceResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -49,11 +48,10 @@ public class Application {
                         .nr("+48999999999")
                         .cid("my-id-1113")
                         .build()))
-                    .message("To jest treść wiadomości")
                     .subject("To jest temat wiadomości")
+                    .message("To jest treść wiadomości")
                     .attachments(Attachments.of(List.of(
                         "<file_body in base64 format>")))
-                    .date(JsonNullable.of(null))
                     .build()));
 
         GetMmsPriceResponse res = sdk.outgoing().mms().getPrice()
@@ -81,7 +79,8 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 401, 4XX, 5XX          | application/problem+json    |
+| models/errors/ErrorResponse | 400, 401, 4XX               | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |
 
 ## send
 
@@ -100,7 +99,6 @@ package hello.world;
 
 import java.lang.Exception;
 import java.util.List;
-import org.openapitools.jackson.nullable.JsonNullable;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.Attachments;
 import pl.gsmservice.gateway.models.components.MmsMessage;
@@ -111,7 +109,7 @@ import pl.gsmservice.gateway.models.operations.SendMmsResponse;
 
 public class Application {
 
-    public static void main(String[] args) throws ErrorResponse, Exception {
+    public static void main(String[] args) throws ErrorResponse, ErrorResponse, Exception {
 
         Client sdk = Client.builder()
                 .bearer("<YOUR API ACCESS TOKEN>")
@@ -121,11 +119,10 @@ public class Application {
                 MmsMessage.builder()
                     .recipients(Recipients.of2(List.of(
                         "+48999999999")))
-                    .message("To jest treść wiadomości")
                     .subject("To jest temat wiadomości")
+                    .message("To jest treść wiadomości")
                     .attachments(Attachments.of(List.of(
                         "<file_body in base64 format>")))
-                    .date(JsonNullable.of(null))
                     .build()));
 
         SendMmsResponse res = sdk.outgoing().mms().send()
@@ -153,4 +150,5 @@ public class Application {
 
 | Error Type                  | Status Code                 | Content Type                |
 | --------------------------- | --------------------------- | --------------------------- |
-| models/errors/ErrorResponse | 400, 401, 403, 4XX, 5XX     | application/problem+json    |
+| models/errors/ErrorResponse | 400, 401, 403, 4XX          | application/problem+json    |
+| models/errors/ErrorResponse | 5XX                         | application/problem+json    |

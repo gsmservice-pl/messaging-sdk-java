@@ -5,19 +5,19 @@
 package pl.gsmservice.gateway;
 
 import java.lang.String;
+import java.lang.SuppressWarnings;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import pl.gsmservice.gateway.models.operations.SDKMethodInterfaces.*;
 import pl.gsmservice.gateway.utils.HTTPClient;
 import pl.gsmservice.gateway.utils.RetryConfig;
 import pl.gsmservice.gateway.utils.SpeakeasyHTTPClient;
 import pl.gsmservice.gateway.utils.Utils;
 
 /**
- * Messaging Gateway GSMService.pl: 
+ * Messaging Gateway SzybkiSMS.pl (former GSMService.pl): 
  * <br>
- * <br>This package includes Messaging SDK for JAVA to send SMS &amp; MMS messages directly from your app via <a href="https://bramka.gsmservice.pl">https://bramka.gsmservice.pl</a> messaging platform.
+ * <br>This package includes Messaging SDK for JAVA to send SMS &amp; MMS messages directly from your app via <a href="https://szybkisms.pl">https://szybkisms.pl</a> messaging platform.
  * <br>
  * <br><em>Client</em> class is used to initialize SDK environment.
  * <br>
@@ -72,9 +72,10 @@ public class Client {
     /**
      * SERVERS contains the list of server urls available to the SDK.
      */
+    @SuppressWarnings("serial")
     public static final Map<AvailableServers, String> SERVERS = new HashMap<>() { {
-    put(AvailableServers.PROD, "https://api.gsmservice.pl/rest");
-    put(AvailableServers.SANDBOX, "https://api.gsmservice.pl/rest-sandbox");
+    put(AvailableServers.PROD, "https://api.szybkisms.pl/rest");
+    put(AvailableServers.SANDBOX, "https://api.szybkisms.pl/rest-sandbox");
     }};
 
     private final Accounts accounts;
@@ -182,7 +183,7 @@ public class Client {
          * @return The builder instance.
          */
         public Builder server(AvailableServers server) {
-            this.sdkConfiguration.server = server.toString();
+            this.sdkConfiguration.server = server.server();
             this.sdkConfiguration.serverUrl = SERVERS.get(server);
             return this;
         }
@@ -197,11 +198,6 @@ public class Client {
             this.sdkConfiguration.retryConfig = Optional.of(retryConfig);
             return this;
         }
-        // Visible for testing, will be accessed via reflection
-        void _hooks(pl.gsmservice.gateway.utils.Hooks hooks) {
-            sdkConfiguration.setHooks(hooks);    
-        }
-        
         /**
          * Builds a new instance of the SDK.
          * @return The SDK instance.
@@ -215,7 +211,7 @@ public class Client {
 	        }
             if (sdkConfiguration.serverUrl == null || sdkConfiguration.serverUrl.isBlank()) {
                 sdkConfiguration.serverUrl = SERVERS.get(AvailableServers.PROD);
-                sdkConfiguration.server = AvailableServers.PROD.toString();
+                sdkConfiguration.server = AvailableServers.PROD.server();
             }
             if (sdkConfiguration.serverUrl.endsWith("/")) {
                 sdkConfiguration.serverUrl = sdkConfiguration.serverUrl.substring(0, sdkConfiguration.serverUrl.length() - 1);
