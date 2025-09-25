@@ -21,6 +21,7 @@ GetMessagesResponse res = sdk.outgoing().getByIds()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getMessages" method="get" path="/messages/{ids}" -->
 ```java
 package hello.world;
 
@@ -83,6 +84,7 @@ As a successful result a `CancelMessagesResponse` object will be returned, with 
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="cancelMessages" method="delete" path="/messages/{ids}" -->
 ```java
 package hello.world;
 
@@ -142,6 +144,7 @@ ListMessagesResponse res = sdk.outgoing().list()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listMessages" method="get" path="/messages" -->
 ```java
 package hello.world;
 

@@ -21,6 +21,7 @@ ListIncomingMessagesResponse res = sdk.incoming().list()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listIncomingMessages" method="get" path="/incoming" -->
 ```java
 package hello.world;
 
@@ -79,6 +80,7 @@ GetIncomingMessagesResponse res = sdk.incoming().getByIds()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getIncomingMessages" method="get" path="/incoming/{ids}" -->
 ```java
 package hello.world;
 

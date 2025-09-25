@@ -7,7 +7,6 @@ This example demonstrates simple sending SMS message to a single recipient:
 package hello.world;
 
 import java.lang.Exception;
-import java.util.List;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
@@ -23,12 +22,11 @@ public class Application {
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
-        SendSmsRequestBody req = SendSmsRequestBody.of(List.of(
-                SmsMessage.builder()
-                    .recipients(SmsMessageRecipients.ofArrayOfStrings(List.of(
-                        "+48999999999")))
-                    .message("To jest treść wiadomości")
-                    .build()));
+        SendSmsRequestBody req = SendSmsRequestBody.of(SmsMessage.builder()
+                .recipients(SmsMessageRecipients.of("+48999999999"))
+                .message("This is SMS message content.")
+                .unicode(true)
+                .build());
 
         SendSmsResponse res = sdk.outgoing().sms().send()
                 .request(req)
@@ -49,11 +47,8 @@ This example demonstrates simple sending MMS message to a single recipient:
 package hello.world;
 
 import java.lang.Exception;
-import java.util.List;
 import pl.gsmservice.gateway.Client;
-import pl.gsmservice.gateway.models.components.Attachments;
-import pl.gsmservice.gateway.models.components.MmsMessage;
-import pl.gsmservice.gateway.models.components.Recipients;
+import pl.gsmservice.gateway.models.components.*;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendMmsRequestBody;
 import pl.gsmservice.gateway.models.operations.SendMmsResponse;
@@ -66,15 +61,12 @@ public class Application {
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
-        SendMmsRequestBody req = SendMmsRequestBody.of(List.of(
-                MmsMessage.builder()
-                    .recipients(Recipients.of2(List.of(
-                        "+48999999999")))
-                    .subject("To jest temat wiadomości")
-                    .message("To jest treść wiadomości")
-                    .attachments(Attachments.of(List.of(
-                        "<file_body in base64 format>")))
-                    .build()));
+        SendMmsRequestBody req = SendMmsRequestBody.of(MmsMessage.builder()
+                .recipients(Recipients.of("+48999999999"))
+                .subject("This is a subject of the message")
+                .message("This is MMS message content.")
+                .attachments(Attachments.of("<file body in base64 format>"))
+                .build());
 
         SendMmsResponse res = sdk.outgoing().mms().send()
                 .request(req)

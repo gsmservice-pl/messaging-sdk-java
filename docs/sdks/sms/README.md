@@ -20,13 +20,12 @@ GetSmsPriceResponse res = sdk.outgoing().sms().getPrice()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getSmsPrice" method="post" path="/messages/sms/price" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
-import java.util.List;
 import pl.gsmservice.gateway.Client;
-import pl.gsmservice.gateway.models.components.PhoneNumberWithCid;
 import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
@@ -41,14 +40,11 @@ public class Application {
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
-        GetSmsPriceRequestBody req = GetSmsPriceRequestBody.of(List.of(
-                SmsMessage.builder()
-                    .recipients(SmsMessageRecipients.of(PhoneNumberWithCid.builder()
-                        .nr("+48999999999")
-                        .cid("my-id-1113")
-                        .build()))
-                    .message("To jest treść wiadomości")
-                    .build()));
+        GetSmsPriceRequestBody req = GetSmsPriceRequestBody.of(SmsMessage.builder()
+                .recipients(SmsMessageRecipients.of("+48999999999"))
+                .message("This is SMS message content.")
+                .unicode(true)
+                .build());
 
         GetSmsPriceResponse res = sdk.outgoing().sms().getPrice()
                 .request(req)
@@ -90,11 +86,11 @@ SendSmsResponse res = sdk.outgoing().sms().send()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="sendSms" method="post" path="/messages/sms" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
-import java.util.List;
 import pl.gsmservice.gateway.Client;
 import pl.gsmservice.gateway.models.components.SmsMessage;
 import pl.gsmservice.gateway.models.components.SmsMessageRecipients;
@@ -110,12 +106,11 @@ public class Application {
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
-        SendSmsRequestBody req = SendSmsRequestBody.of(List.of(
-                SmsMessage.builder()
-                    .recipients(SmsMessageRecipients.ofArrayOfStrings(List.of(
-                        "+48999999999")))
-                    .message("To jest treść wiadomości")
-                    .build()));
+        SendSmsRequestBody req = SendSmsRequestBody.of(SmsMessage.builder()
+                .recipients(SmsMessageRecipients.of("+48999999999"))
+                .message("This is SMS message content.")
+                .unicode(true)
+                .build());
 
         SendSmsResponse res = sdk.outgoing().sms().send()
                 .request(req)

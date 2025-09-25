@@ -21,6 +21,7 @@ ListSendersResponse res = sdk.senders().list()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="listSenders" method="get" path="/senders" -->
 ```java
 package hello.world;
 
@@ -70,6 +71,7 @@ AddSenderResponse res = sdk.senders().add()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="addSender" method="post" path="/senders" -->
 ```java
 package hello.world;
 
@@ -132,6 +134,7 @@ DeleteSenderResponse res = sdk.senders().delete()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="deleteSender" method="delete" path="/senders/{sender}" -->
 ```java
 package hello.world;
 
@@ -186,6 +189,7 @@ SetDefaultSenderResponse res = sdk.senders().setDefault()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="setDefaultSender" method="patch" path="/senders/{sender}" -->
 ```java
 package hello.world;
 

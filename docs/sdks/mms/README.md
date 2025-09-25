@@ -20,16 +20,13 @@ GetMmsPriceResponse res = sdk.outgoing().mms().getPrice()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getMmsPrice" method="post" path="/messages/mms/price" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
-import java.util.List;
 import pl.gsmservice.gateway.Client;
-import pl.gsmservice.gateway.models.components.Attachments;
-import pl.gsmservice.gateway.models.components.MmsMessage;
-import pl.gsmservice.gateway.models.components.PhoneNumberWithCid;
-import pl.gsmservice.gateway.models.components.Recipients;
+import pl.gsmservice.gateway.models.components.*;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.GetMmsPriceRequestBody;
 import pl.gsmservice.gateway.models.operations.GetMmsPriceResponse;
@@ -42,17 +39,12 @@ public class Application {
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
-        GetMmsPriceRequestBody req = GetMmsPriceRequestBody.of(List.of(
-                MmsMessage.builder()
-                    .recipients(Recipients.of(PhoneNumberWithCid.builder()
-                        .nr("+48999999999")
-                        .cid("my-id-1113")
-                        .build()))
-                    .subject("To jest temat wiadomości")
-                    .message("To jest treść wiadomości")
-                    .attachments(Attachments.of(List.of(
-                        "<file_body in base64 format>")))
-                    .build()));
+        GetMmsPriceRequestBody req = GetMmsPriceRequestBody.of(MmsMessage.builder()
+                .recipients(Recipients.of("+48999999999"))
+                .subject("This is a subject of the message")
+                .message("This is MMS message content.")
+                .attachments(Attachments.of("<file body in base64 format>"))
+                .build());
 
         GetMmsPriceResponse res = sdk.outgoing().mms().getPrice()
                 .request(req)
@@ -94,15 +86,13 @@ SendMmsResponse res = sdk.outgoing().mms().send()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="sendMms" method="post" path="/messages/mms" -->
 ```java
 package hello.world;
 
 import java.lang.Exception;
-import java.util.List;
 import pl.gsmservice.gateway.Client;
-import pl.gsmservice.gateway.models.components.Attachments;
-import pl.gsmservice.gateway.models.components.MmsMessage;
-import pl.gsmservice.gateway.models.components.Recipients;
+import pl.gsmservice.gateway.models.components.*;
 import pl.gsmservice.gateway.models.errors.ErrorResponse;
 import pl.gsmservice.gateway.models.operations.SendMmsRequestBody;
 import pl.gsmservice.gateway.models.operations.SendMmsResponse;
@@ -115,15 +105,12 @@ public class Application {
                 .bearer("<YOUR API ACCESS TOKEN>")
             .build();
 
-        SendMmsRequestBody req = SendMmsRequestBody.of(List.of(
-                MmsMessage.builder()
-                    .recipients(Recipients.of2(List.of(
-                        "+48999999999")))
-                    .subject("To jest temat wiadomości")
-                    .message("To jest treść wiadomości")
-                    .attachments(Attachments.of(List.of(
-                        "<file_body in base64 format>")))
-                    .build()));
+        SendMmsRequestBody req = SendMmsRequestBody.of(MmsMessage.builder()
+                .recipients(Recipients.of("+48999999999"))
+                .subject("This is a subject of the message")
+                .message("This is MMS message content.")
+                .attachments(Attachments.of("<file body in base64 format>"))
+                .build());
 
         SendMmsResponse res = sdk.outgoing().mms().send()
                 .request(req)

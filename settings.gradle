@@ -8,3 +8,14 @@
  */
 
 rootProject.name = 'gateway'
+
+include 'gateway-spring-boot-autoconfigure'
+include 'gateway-spring-boot-starter'
+
+project(':gateway-spring-boot-autoconfigure').projectDir = file('spring/gateway-spring-boot-autoconfigure')
+project(':gateway-spring-boot-starter').projectDir = file('spring/gateway-spring-boot-starter')
+
+// Apply additional settings if the file exists
+if (file('settings-extra.gradle').exists()) {
+    apply from: 'settings-extra.gradle'
+}

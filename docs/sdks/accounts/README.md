@@ -14,6 +14,7 @@
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getAccountDetails" method="get" path="/account" -->
 ```java
 package hello.world;
 
@@ -63,6 +64,7 @@ GetSubaccountDetailsResponse res = sdk.accounts().getSubaccount()
 
 ### Example Usage
 
+<!-- UsageSnippet language="java" operationID="getSubaccountDetails" method="get" path="/account/{user_login}" -->
 ```java
 package hello.world;
 
